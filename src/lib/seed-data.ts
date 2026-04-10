@@ -5,7 +5,7 @@ export async function seedRestaurantData() {
 
   // 1. Categories based on real menu
   const categories = [
-    { name_ar: "بيرجر", name_en: "Burgers", sort_order: 13, is_active: true, icon_class: "🍔", image_path: "/images/file-4d47862d-9ad6-4c84-bb82-b70d9f7ce255.webp" },
+    { name_ar: "بيرجر", name_en: "Burgers", sort_order: 13, is_active: true, icon_class: "🍔" },
     { name_ar: "ساندويشات", name_en: "Sandwiches", sort_order: 1, is_active: true, icon_class: "🥪" },
     { name_ar: "وجبات رئيسية", name_en: "Main Meals", sort_order: 2, is_active: true, icon_class: "🍽️" },
     { name_ar: "أجنحة", name_en: "Wings", sort_order: 3, is_active: true, icon_class: "🍗" },
@@ -18,7 +18,7 @@ export async function seedRestaurantData() {
     { name_ar: "حلويات", name_en: "Desserts", sort_order: 10, is_active: true, icon_class: "🍰" },
     { name_ar: "مشروبات باردة", name_en: "Cold Drinks", sort_order: 11, is_active: true, icon_class: "🥤" },
     { name_ar: "أراجيل", name_en: "Hookah", sort_order: 12, is_active: true, icon_class: "💨" },
-    { name_ar: "مقبلات", name_en: "Appetizers", sort_order: 14, is_active: true, icon_class: "🍟", image_path: "/images/img-2398-a9a9219e-ca4c-43ed-8365-127be873e542.jpeg" },
+    { name_ar: "مقبلات", name_en: "Appetizers", sort_order: 14, is_active: true, icon_class: "🍟" },
   ];
 
   const { data: catData, error: catError } = await supabase
@@ -482,9 +482,59 @@ export async function seedRestaurantData() {
   }
 
   // 3. Branches
+  const universalDeliveryZones = [
+    { name_ar: "عين منجد", name_en: "Ein Munjed", fee: 18 },
+    { name_ar: "الماصيون", name_en: "Al-Masyoun", fee: 16 },
+    { name_ar: "رام الله التحتا", name_en: "Ramallah Al-Tahta", fee: 14 },
+    { name_ar: "ام الشرايط", name_en: "Um Al-Sharayet", fee: 18 },
+    { name_ar: "كفر عقب", name_en: "Kufr Aqab", fee: 27 },
+    { name_ar: "سميراميس", name_en: "Semiramis", fee: 22 },
+    { name_ar: "مخيم قلنديا", name_en: "Qalandia Camp", fee: 30 },
+    { name_ar: "الرام", name_en: "Al-Ram", fee: 40 },
+    { name_ar: "الطيرة", name_en: "Al-Tira", fee: 15 },
+    { name_ar: "بطن الهوى", name_en: "Batn Al-Hawa", fee: 16 },
+    { name_ar: "بيتونيا", name_en: "Beitunia", fee: 25 },
+    { name_ar: "عين مصباح", name_en: "Ein Misbah", fee: 13 },
+    { name_ar: "الارسال", name_en: "Al-Irsal", fee: 10 },
+    { name_ar: "سطح مرحبا", name_en: "Satahi Marahaba", fee: 18 },
+    { name_ar: "شارع القدس", name_en: "Jerusalem St.", fee: 15 },
+    { name_ar: "الامعري", name_en: "Al-Amari", fee: 15 },
+    { name_ar: "الشرفة", name_en: "Al-Shurfa", fee: 15 },
+    { name_ar: "وسط البلد", name_en: "City Center", fee: 12 },
+    { name_ar: "البالوع", name_en: "Al-Balou'", fee: 10 },
+    { name_ar: "المصايف", name_en: "Al-Masayef", fee: 10 },
+    { name_ar: "شارع نابلس", name_en: "Nablus St.", fee: 10 },
+    { name_ar: "جبل الطويل - البيرة", name_en: "Jebel Al-Taweel - Al-Bireh", fee: 12 },
+    { name_ar: "سردا", name_en: "Surda", fee: 16 },
+    { name_ar: "ابو قش", name_en: "Abu Qash", fee: 25 },
+    { name_ar: "الريحان", name_en: "Al-Rehan", fee: 25 },
+    { name_ar: "الدبلوماسي", name_en: "Diplomatic Quarter", fee: 20 },
+    { name_ar: "بيرزيت", name_en: "Birzeit", fee: 30 },
+    { name_ar: "بير نبالا", name_en: "Bir Nabala", fee: 40 },
+    { name_ar: "خارجي", name_en: "External", fee: 15 },
+    { name_ar: "مفرق 17 بيتونيا", name_en: "Beitunia - Junction 17", fee: 25 },
+    { name_ar: "صناعة بيتونيا", name_en: "Beitunia Industrial", fee: 17 },
+    { name_ar: "بيتونيا السنابل", name_en: "Beitunia Al-Sanabel", fee: 17 },
+    { name_ar: "مفرق الحتو بيتونيا", name_en: "Beitunia Al-Hatu Junction", fee: 20 },
+    { name_ar: "البلدة القديمة بيتونيا", name_en: "Old City Beitunia", fee: 30 },
+    { name_ar: "دوار الفواكه بيتونيا", name_en: "Fruit Roundabout Beitunia", fee: 20 },
+    { name_ar: "بيتونيا دوار المدارس", name_en: "Beitunia Schools Roundabout", fee: 25 },
+    { name_ar: "بيتونيا ملاهي مخماس", name_en: "Beitunia Mukhamas Park", fee: 18 },
+    { name_ar: "شارع المعبر بيتونيا", name_en: "Beitunia Crossing St.", fee: 22 },
+    { name_ar: "بالوع بيتونيا", name_en: "Beitunia Balou'", fee: 22 },
+    { name_ar: "بلدية البيرة", name_en: "Al-Bireh Municipality", fee: 13 },
+    { name_ar: "حي الجنان البيرة", name_en: "Al-Jenan - Al-Bireh", fee: 15 },
+    { name_ar: "اسعاد الطفولة البيرة", name_en: "Is'ad Al-Tufula - Al-Bireh", fee: 13 },
+    { name_ar: "المدرسة الهاشمية البيرة", name_en: "Hashemite School - Al-Bireh", fee: 13 },
+    { name_ar: "الجلزون", name_en: "Jalazone", fee: 20 },
+    { name_ar: "رافات", name_en: "Rafat", fee: 25 },
+    { name_ar: "دوار رافات", name_en: "Rafat Roundabout", fee: 20 },
+    { name_ar: "قلنديا البلد", name_en: "Qalandia Village", fee: 30 },
+  ];
+
   const branches = [
-    { name_ar: "الأرسال", name_en: "Al-Irsal", slug: "al-irsal", latitude: 31.9148, longitude: 35.2016, is_active: true, sort_order: 1, banner_image_path: "/images/alirsal.webp" },
-    { name_ar: "الطيرة", name_en: "Al-Tira", slug: "al-tira", latitude: 31.9056, longitude: 35.1950, is_active: true, sort_order: 2, banner_image_path: "/images/altira.webp" },
+    { name_ar: "الأرسال", name_en: "Al-Irsal", slug: "al-irsal", latitude: 31.9148, longitude: 35.2016, is_active: true, sort_order: 1, banner_image_path: "/images/alirsal.webp", delivery_zones: universalDeliveryZones },
+    { name_ar: "الطيرة", name_en: "Al-Tira", slug: "al-tira", latitude: 31.9056, longitude: 35.1950, is_active: true, sort_order: 2, banner_image_path: "/images/altira.webp", delivery_zones: universalDeliveryZones },
   ];
   await supabase.from("branches").upsert(branches, { onConflict: 'slug' });
 

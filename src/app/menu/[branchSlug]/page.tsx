@@ -97,12 +97,7 @@ export default async function MenuPage({ params }: MenuPageProps) {
 
         .up-fire-badge { position: absolute; top: 15px; left: 15px; background: #111; color: #fff; padding: 6px 12px; border-radius: 50px; font-weight: 900; font-size: 11px; z-index: 10; display: flex; align-items: center; gap: 4px; }
         .up-fire-emoji { color: #FF9800; font-size: 13px; }
-        .up-sec-title { display: block; font-size: 2rem; font-weight: 900; color: #fff; text-align: center; margin: 20px 0 20px 0; }
-        
-        /* 🖼️ CATEGORY BANNERS */
-        .up-cat-banner-wrap { width: 100%; height: 250px; overflow: hidden; border-radius: 40px; margin-bottom: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1); }
-        .up-cat-banner { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .up-sec:hover .up-cat-banner { transform: scale(1.03); }
+        .up-sec-title { display: block; font-size: 2rem; font-weight: 900; color: #fff; text-align: center; margin: 40px 0 20px 0; }
       `}} />
 
       <div className="hero-gap" />
@@ -167,21 +162,11 @@ export default async function MenuPage({ params }: MenuPageProps) {
                  cartBtn.onclick = () => { window.UI.renderCartModal(branch.slug, currency); window.UI.showModal("cart-modal-overlay", "cart-modal"); };
               }
 
-              // Render Grid
               let content = "";
-              const categoryImages = {
-                "Burgers": "/images/file-4d47862d-9ad6-4c84-bb82-b70d9f7ce255.webp",
-                "بيرجر": "/images/file-4d47862d-9ad6-4c84-bb82-b70d9f7ce255.webp",
-                "Appetizers": "/images/img-2398-a9a9219e-ca4c-43ed-8365-127be873e542.jpeg",
-                "مقبلات": "/images/img-2398-a9a9219e-ca4c-43ed-8365-127be873e542.jpeg"
-              };
-
               categories.forEach(cat => {
                 const prods = allProducts.filter(p => p.categoryId === cat.id);
-                const catImg = cat.imagePath || categoryImages[cat.nameEn] || categoryImages[cat.nameAr];
 
                 content += '<div class="up-sec" id="up-' + cat.id + '">' +
-                  (catImg ? '<div class="up-cat-banner-wrap"><img src="' + catImg + '" class="up-cat-banner" /></div>' : '') +
                   '<h2 class="up-sec-title">' + (isAr ? cat.nameAr : cat.nameEn) + '</h2><div class="up-grid">';
                 prods.forEach(p => {
                     const price = p.basePrice * (1 - (p.discount || 0) / 100);

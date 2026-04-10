@@ -50,11 +50,11 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                 const items = (window as any).Cart.getItems(branch.slug);
                 setCartItems(items);
                 const itemsTotal = (window as any).Cart.getTotal(branch.slug);
-                
+
                 // Calculate Discount
                 const dPercent = branch.discountPercent || 0;
                 const dAmount = (itemsTotal * dPercent) / 100;
-                
+
                 setSubtotal(itemsTotal);
                 setDiscount(dAmount);
                 setTotal(itemsTotal - dAmount + deliveryFee);
@@ -71,7 +71,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
         e.preventDefault();
         if (!isOpen) return alert(isAr ? "عذراً، المطعم مغلق حالياً ولا يمكن استقبال الطلبات." : "Sorry, the restaurant is currently closed and cannot receive orders.");
         if (cartItems.length === 0) return alert(isAr ? "السلة فارغة" : "Cart is empty");
-        
+
         const name = (document.getElementById('customer-name') as HTMLInputElement).value.trim();
         const phone = (document.getElementById('customer-phone') as HTMLInputElement).value.trim();
         const email = (document.getElementById('customer-email') as HTMLInputElement).value.trim();
@@ -130,7 +130,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
 
                 if (paymentMethod === "palpay") {
                     console.log(`[Checkout] Initiating online payment for ${freshTotal} ${settings.currencySymbol || '₪'}`);
-                    
+
                     const payRes = await fetch("/api/payments/lahza/initiate", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -157,22 +157,22 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                     try {
                         const audio = new Audio('/sounds/success.mp3');
                         audio.play().catch(e => console.log("Sound play error", e));
-                    } catch(e) {}
+                    } catch (e) { }
 
                     // Construct WhatsApp Message
                     const orderTypeLabel = orderType === 'delivery' ? (isAr ? 'توصيل' : 'Delivery') : (subType === 'table' ? (isAr ? 'طاولة' : 'Table') : (isAr ? 'استلام' : 'Pickup'));
                     const itemsTxt = items.map((i: any) => `- ${i.quantity}x ${isAr ? i.nameAr : i.nameEn} (${i.finalPrice} ₪)`).join('%0A');
                     const msg = `*طلب جديد من UPTOWN*%0A%0A` +
-                                `*العميل:* ${name}%0A` +
-                                `*الهاتف:* ${phone}%0A` +
-                                `*نوع الطلب:* ${orderTypeLabel}%0A` +
-                                `${orderType === 'delivery' ? `*العنوان:* ${finalAddress}` : (subType === 'table' ? `*رقم الطاولة:* ${table}` : `*وقت الاستلام:* ${pickupTime}`)}%0A%0A` +
-                                `*الأصناف:*%0A${itemsTxt}%0A%0A` +
-                                `*المجموع:* ${freshTotal} ₪%0A%0A` +
-                                `_تم إرسال الطب عبر الموقع الإلكتروني_`;
-                    
+                        `*العميل:* ${name}%0A` +
+                        `*الهاتف:* ${phone}%0A` +
+                        `*نوع الطلب:* ${orderTypeLabel}%0A` +
+                        `${orderType === 'delivery' ? `*العنوان:* ${finalAddress}` : (subType === 'table' ? `*رقم الطاولة:* ${table}` : `*وقت الاستلام:* ${pickupTime}`)}%0A%0A` +
+                        `*الأصناف:*%0A${itemsTxt}%0A%0A` +
+                        `*المجموع:* ${freshTotal} ₪%0A%0A` +
+                        `_تم إرسال الطب عبر الموقع الإلكتروني_`;
+
                     const waLink = `https://wa.me/${branch.whatsApp.replace(/\+/g, '').replace(/\s/g, '')}?text=${msg}`;
-                    
+
                     // Redirect to success but open WhatsApp
                     window.open(waLink, '_blank');
                     window.location.href = `/checkout/success?orderId=${res.orderId}&branchSlug=${branch.slug}&method=cash`;
@@ -193,14 +193,14 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
             </div>
 
             {!isOpen && (
-                <div style={{ 
-                    background: '#FEF2F2', 
-                    border: '1px solid #FCA5A5', 
-                    borderRadius: '24px', 
-                    padding: '24px', 
-                    marginBottom: '30px', 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                <div style={{
+                    background: '#FEF2F2',
+                    border: '1px solid #FCA5A5',
+                    borderRadius: '24px',
+                    padding: '24px',
+                    marginBottom: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: '20px',
                     boxShadow: '0 10px 30px rgba(220, 38, 38, 0.05)'
                 }}>
@@ -210,7 +210,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                     <div>
                         <h4 style={{ color: '#991B1B', fontWeight: 900, marginBottom: '5px' }}>{isAr ? 'المطعم مغلق حالياً' : 'Restaurant Currently Closed'}</h4>
                         <p style={{ color: '#B91C1C', fontSize: '14px', fontWeight: 600 }}>
-                            {isAr 
+                            {isAr
                                 ? `نعتذر منك، ساعات العمل في هذا الفرع من ${branch.openingTime} حتى ${branch.closingTime}. يمكنك تصفح المنيو ولكن لا يمكن استقبال طلبات حالياً.`
                                 : `We apologize, this branch operates from ${branch.openingTime} to ${branch.closingTime}. You can browse the menu but cannot place orders at this time.`
                             }
@@ -321,7 +321,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                                 <span>{item.finalPrice.toFixed(2)}</span>
                             </div>
                         ))}
-                        
+
                         <div style={{ marginTop: '20px', paddingTop: '15px', borderTop: '1px solid #f0f0f0' }}>
                             {discount > 0 && (
                                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#059669', fontWeight: 700, marginBottom: '8px' }}>
@@ -353,6 +353,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                             <div onClick={() => setPaymentMethod('palpay')} className={`premium-choice-card ${paymentMethod === 'palpay' ? 'active' : ''}`} style={{ padding: '25px' }}>
                                 <CreditCard size={36} />
                                 <span style={{ fontSize: '14px', marginTop: '10px' }}>{isAr ? 'دفع إلكتروني بطاقة/لحظة' : 'Online Payment Card/Lahza'}</span>
+                                <img src="/images/Visa-Emblem.jpg" alt="Visa" style={{ height: '30px', marginTop: '10px', objectFit: 'contain' }} />
                             </div>
                         </div>
                     </div>
@@ -379,12 +380,12 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                         <button type="submit" className="uptown-btn red" disabled={isPending || !isOpen} style={{ opacity: !isOpen ? 0.6 : 1, cursor: !isOpen ? 'not-allowed' : 'pointer' }}>
                             <CheckCircle2 color="#fff" />
-                            {!isOpen 
+                            {!isOpen
                                 ? (isAr ? 'المطعم مغلق حالياً' : 'Restaurant Closed')
-                                : (isPending 
-                                    ? (isAr ? 'جاري المعالجة...' : 'Processing...') 
-                                    : (paymentMethod === 'palpay' 
-                                        ? (isAr ? 'المتابعة للدفع الإلكتروني' : 'Continue to Online Payment') 
+                                : (isPending
+                                    ? (isAr ? 'جاري المعالجة...' : 'Processing...')
+                                    : (paymentMethod === 'palpay'
+                                        ? (isAr ? 'المتابعة للدفع الإلكتروني' : 'Continue to Online Payment')
                                         : (isAr ? 'تأكيد إرسال الطلب' : 'Confirm & Send')))}
                         </button>
                     </div>
