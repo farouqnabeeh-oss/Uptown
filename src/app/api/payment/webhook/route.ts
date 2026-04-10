@@ -4,16 +4,16 @@ import { createClient } from "@supabase/supabase-js";
 import { sendOrderInvoiceEmail } from "@/lib/mail-actions";
 import { Order, OrderItem, Branch } from "@/lib/types";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2025-01-27" as any,
-});
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
 export async function POST(req: Request) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+    apiVersion: "2025-01-27" as any,
+  });
+
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+
   const body = await req.text();
   const signature = req.headers.get("stripe-signature")!;
 
