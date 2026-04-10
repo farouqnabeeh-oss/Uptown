@@ -74,7 +74,10 @@ export async function loginAction(_: { error?: string } | undefined, formData: F
   }
 
   // 🔐 SPECIAL OVERRIDE FOR THE NEW ADMIN ACCESS
-  if ((username === "Admin@" || username.toLowerCase() === "admin@") && password === "Uptown@2026") {
+  const envAdminUser = process.env.ADMIN_USER || "Admin@";
+  const envAdminPass = process.env.ADMIN_PASSWORD || "Uptown@2026";
+
+  if ((username.toLowerCase() === envAdminUser.toLowerCase()) && password === envAdminPass) {
     // Try to find the first available admin or use a virtual one
     const user = await getAdminUserByEmail("admin@uptown.ps");
 

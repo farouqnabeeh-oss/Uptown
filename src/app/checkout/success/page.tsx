@@ -178,41 +178,80 @@ function SuccessContent() {
 
         {/* Invoice Summary */}
         {orderData && (
-          <div style={{ background: '#fcfcfc', border: '1px dashed #ddd', borderRadius: '25px', padding: '25px', marginBottom: '30px', textAlign: 'right' }}>
-            <h4 style={{ margin: '0 0 15px 0', fontSize: '14px', fontWeight: 900, borderBottom: '1px solid #eee', paddingBottom: '10px' }}>
-              {isAr ? '🧾 ملخص الفاتورة' : '🧾 Invoice Summary'}
-            </h4>
-            <div className="items-list" style={{ maxHeight: '250px', overflowY: 'auto', marginBottom: '15px' }}>
+          <div className="invoice-receipt" style={{ 
+            background: '#fff', 
+            border: '1px solid #eee', 
+            borderRadius: '25px', 
+            padding: '30px', 
+            marginBottom: '30px', 
+            textAlign: 'right', 
+            boxShadow: '0 5px 15px rgba(0,0,0,0.02)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{ textAlign: 'center', marginBottom: '25px', position: 'relative' }}>
+                <img src="/logo.jpeg" alt="Uptown" style={{ height: '50px', marginBottom: '10px' }} />
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 900, color: '#000' }}>{isAr ? 'فاتورة طلب' : 'Order Invoice'}</h3>
+                <p style={{ margin: '5px 0', fontSize: '12px', color: '#888' }}>#{orderId}</p>
+            </div>
+            
+            <div style={{ borderTop: '1px dashed #ddd', borderBottom: '1px dashed #ddd', padding: '15px 0', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '8px' }}>
+                    <span style={{ color: '#888' }}>{isAr ? 'الاسم:' : 'Name:'}</span>
+                    <span style={{ fontWeight: 800 }}>{orderData.customer_name}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                    <span style={{ color: '#888' }}>{isAr ? 'الخدمة:' : 'Order:'}</span>
+                    <span style={{ fontWeight: 800 }}>{orderData.order_type}</span>
+                </div>
+            </div>
+
+            <div className="items-list" style={{ marginBottom: '20px' }}>
               {(orderData.order_items || []).map((oi: any, i: number) => (
-                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '8px', fontWeight: 600 }}>
-                  <span style={{ color: '#555' }}>{oi.quantity}x {isAr ? oi.product_name_ar : oi.product_name_en}</span>
-                  <span style={{ color: '#000' }}>{(oi.price * oi.quantity).toFixed(2)} ₪</span>
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '12px' }}>
+                  <div style={{ textAlign: isAr ? 'right' : 'left' }}>
+                    <div style={{ fontWeight: 800, color: '#000' }}>{isAr ? oi.product_name_ar : oi.product_name_en}</div>
+                    <div style={{ fontSize: '12px', color: '#999' }}>{oi.quantity} x {oi.price.toFixed(2)}</div>
+                  </div>
+                  <div style={{ fontWeight: 800, color: '#000' }}>{(oi.price * oi.quantity).toFixed(2)} ₪</div>
                 </div>
               ))}
             </div>
 
-            <div style={{ borderTop: '1px solid #eee', paddingTop: '15px', marginBottom: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#666', marginBottom: '6px' }}>
+            <div style={{ borderTop: '1px solid #f0f0f0', paddingTop: '15px', marginBottom: '15px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#666', marginBottom: '8px' }}>
                 <span>{isAr ? 'المجموع' : 'Subtotal'}</span>
                 <span>{itemsSubtotal.toFixed(2)} ₪</span>
               </div>
               {discountAmount > 0 && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#059669', fontWeight: 700, marginBottom: '6px' }}>
-                  <span>{isAr ? `خصم العرض (${dPercent}%)` : `Discount (${dPercent}%)`}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#059669', fontWeight: 700, marginBottom: '8px' }}>
+                  <span>{isAr ? `خصم (${dPercent}%)` : `Discount (${dPercent}%)`}</span>
                   <span>-{discountAmount.toFixed(2)} ₪</span>
                 </div>
               )}
               {deliveryFee > 0.1 && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#666', marginBottom: '6px' }}>
-                  <span>{isAr ? 'رسوم التوصيل' : 'Delivery Fee'}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#666', marginBottom: '8px' }}>
+                  <span>{isAr ? 'رسوم التوصيل' : 'Delivery'}</span>
                   <span>+{deliveryFee.toFixed(2)} ₪</span>
                 </div>
               )}
             </div>
 
-            <div style={{ borderTop: '2px solid #000', paddingTop: '15px', display: 'flex', justifyContent: 'space-between', fontWeight: 900, fontSize: '1.2rem' }}>
-              <span>{isAr ? 'المجموع النهائي' : 'Grand Total'}</span>
-              <span style={{ color: '#cf1f28' }}>{orderData.total_amount} ₪</span>
+            <div style={{ 
+                borderTop: '2px solid #000', 
+                paddingTop: '15px', 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                fontWeight: 900, 
+                fontSize: '1.5rem', 
+                color: '#8B0000' 
+            }}>
+              <span>{isAr ? 'الإجمالي' : 'Total'}</span>
+              <span>{orderData.total_amount || (itemsSubtotal - discountAmount + deliveryFee).toFixed(2)} ₪</span>
+            </div>
+            
+            <div style={{ textAlign: 'center', marginTop: '30px', fontSize: '12px', color: '#aaa', fontStyle: 'italic' }}>
+                {isAr ? 'شكراً لطلبكم! بالهناء والشفاء.' : 'Thank you for your order! Enjoy your meal.'}
             </div>
           </div>
         )}

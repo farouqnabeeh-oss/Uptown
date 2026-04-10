@@ -75,13 +75,14 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
         const name = (document.getElementById('customer-name') as HTMLInputElement).value.trim();
         const phone = (document.getElementById('customer-phone') as HTMLInputElement).value.trim();
         const email = (document.getElementById('customer-email') as HTMLInputElement).value.trim();
+        const birthday = (document.getElementById('customer-birthday') as HTMLInputElement)?.value;
         const address = (document.getElementById('customer-address') as HTMLInputElement)?.value.trim();
         const table = (document.getElementById('customer-table') as HTMLInputElement)?.value.trim();
         const pickupTime = (document.getElementById('customer-pickup-time') as HTMLInputElement)?.value.trim();
         const notes = (document.getElementById('customer-notes') as HTMLTextAreaElement)?.value.trim();
         const policyAccepted = (document.getElementById('policy-accept') as HTMLInputElement).checked;
 
-        if (!name || !phone || !email) return alert(isAr ? 'يرجى ملأ جميع الحقول الأساسية (الاسم، الهاتف، البريد)' : 'Please fill all required fields (Name, Phone, Email)');
+        if (!name || !phone) return alert(isAr ? 'يرجى ملأ جميع الحقول الأساسية (الاسم، الهاتف)' : 'Please fill all required fields (Name, Phone)');
         if (orderType === 'delivery' && (!selectedZone || !address)) return alert(isAr ? 'يرجى اختيار منطقة التوصيل وكتابة العنوان بالتفصيل' : 'Please select a delivery zone and enter your address');
         if (orderType === 'inRestaurant' && subType === 'table' && !table) return alert(isAr ? 'يرجى إدخال رقم الطاولة' : 'Please enter table number');
         if (orderType === 'inRestaurant' && subType === 'pickup' && !pickupTime) return alert(isAr ? 'يرجى اختيار وقت الاستلام' : 'Please select pickup time');
@@ -135,7 +136,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             orderId: res.orderId,
-                            email,
+                            email: email || "customer@uptown.ps", // Fallback for optional email
                             amount: freshTotal,
                             currency: settings.currencySymbol === "₪" ? "ILS" : settings.currencySymbol || "USD",
                             customerName: name,
@@ -152,7 +153,28 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                         alert(isAr ? `فشل بدء عملية الدفع: ${payData.error || 'خطأ فني'}` : `Failed to initiate payment: ${payData.error || 'Technical error'}`);
                     }
                 } else {
-                    // Success for Cash
+                    // Success for WhatsApp/Cash
+                    try {
+                        const audio = new Audio('/sounds/success.mp3');
+                        audio.play().catch(e => console.log("Sound play error", e));
+                    } catch(e) {}
+
+                    // Construct WhatsApp Message
+                    const orderTypeLabel = orderType === 'delivery' ? (isAr ? 'توصيل' : 'Delivery') : (subType === 'table' ? (isAr ? 'طاولة' : 'Table') : (isAr ? 'استلام' : 'Pickup'));
+                    const itemsTxt = items.map((i: any) => `- ${i.quantity}x ${isAr ? i.nameAr : i.nameEn} (${i.finalPrice} ₪)`).join('%0A');
+                    const msg = `*طلب جديد من UPTOWN*%0A%0A` +
+                                `*العميل:* ${name}%0A` +
+                                `*الهاتف:* ${phone}%0A` +
+                                `*نوع الطلب:* ${orderTypeLabel}%0A` +
+                                `${orderType === 'delivery' ? `*العنوان:* ${finalAddress}` : (subType === 'table' ? `*رقم الطاولة:* ${table}` : `*وقت الاستلام:* ${pickupTime}`)}%0A%0A` +
+                                `*الأصناف:*%0A${itemsTxt}%0A%0A` +
+                                `*المجموع:* ${freshTotal} ₪%0A%0A` +
+                                `_تم إرسال الطب عبر الموقع الإلكتروني_`;
+                    
+                    const waLink = `https://wa.me/${branch.whatsApp.replace(/\+/g, '').replace(/\s/g, '')}?text=${msg}`;
+                    
+                    // Redirect to success but open WhatsApp
+                    window.open(waLink, '_blank');
                     window.location.href = `/checkout/success?orderId=${res.orderId}&branchSlug=${branch.slug}&method=cash`;
                 }
             } catch (err: any) {
@@ -164,8 +186,10 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
     return (
         <div className="uptown-checkout-wrapper" style={{ maxWidth: '900px', margin: '60px auto', padding: '0 20px' }}>
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <img src="/logo.jpeg" alt="Uptown" style={{ display: 'block', margin: '0 auto 20px auto', height: '80px' }} />
                 <h1 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '10px' }}>{isAr ? 'إتمام الطلب' : 'Checkout'}</h1>
-                <button onClick={() => window.history.back()} style={{ color: '#666', fontWeight: 700 }}>{isAr ? '← رجوع للقائمة' : '← Back to Menu'}</button>
+                <p style={{ fontWeight: 800, color: '#8b0000', fontSize: '1.1rem', marginBottom: '15px' }}>{isAr ? branch.nameAr : branch.nameEn}</p>
+                <button onClick={() => window.history.back()} style={{ color: '#666', fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer' }}>{isAr ? '← رجوع للقائمة' : '← Back to Menu'}</button>
             </div>
 
             {!isOpen && (
@@ -235,9 +259,13 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                             <label>{isAr ? 'رقم الهاتف' : 'Phone'} *</label>
                             <input type="tel" id="customer-phone" required className="uptown-input" />
                         </div>
-                        <div className="uptown-input-group" style={{ gridColumn: 'span 2' }}>
-                            <label>{isAr ? 'البريد الإلكتروني' : 'Email'} *</label>
-                            <input type="email" id="customer-email" required className="uptown-input" />
+                        <div className="uptown-input-group">
+                            <label>{isAr ? 'البريد الإلكتروني' : 'Email'} ({isAr ? 'اختياري' : 'Optional'})</label>
+                            <input type="email" id="customer-email" className="uptown-input" />
+                        </div>
+                        <div className="uptown-input-group">
+                            <label>{isAr ? 'تاريخ الميلاد' : 'Birth Date'} ({isAr ? 'اختياري' : 'Optional'})</label>
+                            <input type="date" id="customer-birthday" className="uptown-input" />
                         </div>
 
                         {orderType === 'delivery' && (
@@ -388,7 +416,7 @@ export default function CheckoutForm({ branch, settings, lang: initialLang }: Pr
                     width: 100%; padding: 20px; border-radius: 25px; border: none; font-size: 18px; 
                     font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; transition: 0.3s;
                 }
-                .uptown-btn.red { background: linear-gradient(to right, #C6151D, #E31E24); color: #fff; box-shadow: 0 10px 40px rgba(227,30,36,0.3); }
+                .uptown-btn.red { background: #8B0000; color: #fff; box-shadow: 0 10px 40px rgba(139,0,0,0.3); }
                 .uptown-btn.blue { background: #2563EB; color: #fff; box-shadow: 0 10px 40px rgba(37,99,235,0.2); }
                 .uptown-btn:hover { transform: scale(1.02); opacity: 0.95; }
                 .uptown-btn:disabled { opacity: 0.5; cursor: not-allowed; }

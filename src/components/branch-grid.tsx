@@ -98,119 +98,110 @@ export function BranchGrid({ branches, lang = "ar" }: Props) {
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
         <button
           onClick={handleLocateMe}
-          className="ultra-action-btn"
           disabled={isLocating}
           style={{ 
             width: 'auto', 
-            padding: '14px 60px', 
-            borderRadius: '10px', 
-            background: '#222', 
+            padding: '10px 30px', 
+            borderRadius: '8px', 
+            background: '#1a1a1a', 
             color: '#fff', 
-            fontSize: '15px',
-            fontWeight: 900,
-            transition: 'all 0.3s ease',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.15)'
+            fontSize: '13px',
+            fontWeight: 800,
+            border: 'none',
+            cursor: 'pointer'
           }}
         >
           {isLocating ? (isAr ? "جاري التحديد..." : "Locating...") : t.locateMe}
         </button>
-        <p style={{ fontSize: '11px', color: '#999', fontWeight: 600 }}>
+        <p style={{ fontSize: '11px', color: '#a0aec0', fontWeight: 500, margin: 0 }}>
           {isAr ? "يمكنك أيضاً اختيار أي فرع يدوياً" : "You can also choose any branch manually"}
         </p>
       </div>
 
       <div className="simple-branch-grid" style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', 
-        gap: '30px', 
-        padding: '20px 0' 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', 
+        gap: '20px', 
+        padding: '10px 0' 
       }}>
         {branches.map((branch) => {
           const branchName = isAr ? branch.nameAr : (branch.nameEn || branch.nameAr);
           return (
             <div key={branch.id} className="simple-branch-card" style={{
               background: '#fff',
-              borderRadius: '25px',
+              borderRadius: '24px',
               overflow: 'hidden',
-              transition: 'all 0.3s ease',
               position: 'relative',
               display: 'flex',
               flexDirection: 'column',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
-              border: '1px solid #f2f2f2'
+              boxShadow: '0 20px 50px rgba(0,0,0,0.08)',
+              border: 'none',
+              margin: '5px'
             }}>
               {/* Media Section */}
-              <div className="branch-card-media" style={{ height: '240px', position: 'relative', overflow: 'hidden', margin: '12px', borderRadius: '15px' }}>
-                <img
-                  src={branch.bannerImagePath || "https://images.unsplash.com/photo-1543353071-09707a3f9d3d?q=80&w=1600&auto=format&fit=crop"}
-                  alt={branchName}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  className="branch-img"
-                />
-                
-                {/* Promo Badge */}
-                <div style={{
-                  position: 'absolute', top: '15px', left: '15px',
-                  background: '#fff',
-                  color: '#cf1f28', 
-                  padding: '6px 14px',
-                  borderRadius: '100px', 
-                  fontSize: '11px', 
-                  fontWeight: 900, 
-                  zIndex: 2,
-                  boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-                  border: '1px solid #f0f0f0'
-                }}>
-                  OFF 10%
-                </div>
+              <div className="branch-card-media-shell" style={{ position: 'relative', height: '240px', overflow: 'hidden' }}>
+                  <a href={`/menu/${branch.slug}`} onClick={() => localStorage.setItem("uptown-preferred-branch", branch.slug)}>
+                    <img
+                        src={branch.bannerImagePath || "https://images.unsplash.com/photo-1543353071-09707a3f9d3d?q=80&w=1600&auto=format&fit=crop"}
+                        alt={branchName}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        className="branch-img"
+                    />
+                  </a>
+                  
+                  {/* Promo Badge */}
+                  <div style={{
+                      position: 'absolute', top: '20px', left: '20px',
+                      background: '#fff',
+                      color: '#991b1b', 
+                      padding: '8px 16px',
+                      borderRadius: '50px', 
+                      fontSize: '11px', 
+                      fontWeight: 900, 
+                      zIndex: 2,
+                      boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                  }}>
+                      OFF {branch.discountPercent || '10'}%
+                  </div>
               </div>
 
               {/* Content Section */}
-              <div className="branch-card-content" style={{ padding: '0 25px 25px', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.8rem', marginBottom: '5px', fontWeight: 900, color: '#0a1d37' }}>{branchName}</h3>
-                
-                <p style={{ color: '#888', fontSize: '13px', marginBottom: '20px', fontWeight: 600 }}>
-                  {branch.phone || "+97259xxxxxxx"}
-                </p>
+              <div className="branch-card-content" style={{ padding: '30px', textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ marginBottom: '30px' }}>
+                    <h3 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#0f172a', margin: '0 0 8px 0' }}>{branchName}</h3>
+                    <p style={{ color: '#475569', fontSize: '15px', fontWeight: 500, margin: 0, direction: 'ltr' }}>{branch.slug === 'al-irsal' ? '+970597101010' : branch.slug === 'al-tira' ? '+972593667711' : (branch.phone || branch.whatsApp)}</p>
+                </div>
 
-                <div style={{ marginTop: 'auto', display: 'flex', gap: '12px' }}>
-                  <a 
-                    href={`https://www.google.com/maps?q=${branch.latitude},${branch.longitude}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      flex: 1,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: '#fff',
-                      color: '#000',
-                      padding: '15px 0',
-                      borderRadius: '10px',
-                      fontWeight: 700,
-                      fontSize: '13px',
-                      border: '1px solid #e0e0e0'
-                    }}
-                  >
-                    {isAr ? "عرض الموقع على الخارطة" : "View on Map"}
+                <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: '15px', alignItems: 'center' }}>
+                  <a href={branch.slug === 'al-irsal' ? "https://www.google.com/maps/place/Uptown+Burger+%26+Wings/@31.9066554,35.1557243,14z/data=!4m14!1m7!3m6!1s0x151d2bb8c84d9847:0x354589acab67e291!2sUptown+Burger+%26+Wings!8m2!3d31.9204864!4d35.2092704!16s%2Fg%2F11nwwvx95t!3m5!1s0x151d2bb8c84d9847:0x354589acab67e291!8m2!3d31.9204864!4d35.2092704!16s%2Fg%2F11nwwvx95t?entry=ttu&g_ep=EgoyMDI2MDMyOS4wIKXMDSoASAFQAw%3D%3D" : branch.slug === 'al-tira' ? "https://www.google.com/maps/place/Uptown+Burger+%26+Wings/@31.9066554,35.1557243,14z/data=!4m10!1m2!2m1!1sUptown+Burger+%26+Wings,+Ein+Ajoz,+behind+sarreyar,+Al-tira+St,+Ramallah!3m6!1s0x151d2ab6097574eb:0xd93318b7f41be802!8m2!3d31.9066554!4d35.1938331!15sCkZVcHRvd24gQnVyZ2VyICYgV2luZ3MsIEVpbiBBam96LCBiZWhpbmQgc2FycmV5YXIsIEFsLXRpcmEgU3QsIFJhbWFsbGFoWkQiQnVwdG93biBidXJnZXIgJiB3aW5ncyBlaW4gYWpveiBiZWhpbmQgc2FycmV5YXIgYWwgdGlyYSBzdCByYW1hbGxhaJIBCnJlc3RhdXJhbnTgAQA!16s%2Fg%2F11yqkyt7rd?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" : "#"} target="_blank" rel="noopener noreferrer" style={{ 
+                    background: '#fff',
+                    border: '1.5px solid #e2e8f0', 
+                    color: '#0f172a', 
+                    padding: '14px 10px', 
+                    borderRadius: '16px', 
+                    fontSize: '13px', 
+                    fontWeight: 900, 
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }} className="map-btn">
+                    {isAr ? "عرض الموقع على الخارطة" : "View Map"}
                   </a>
 
-                  <a href={`/menu/${branch.slug}`} style={{
-                    flex: 1,
+                  <a href={`/menu/${branch.slug}`} onClick={() => localStorage.setItem("uptown-preferred-branch", branch.slug)} style={{ 
+                    background: 'linear-gradient(to bottom, #d92228, #b91c1c)', 
+                    color: '#fff', 
+                    padding: '14px 10px', 
+                    borderRadius: '16px', 
+                    fontSize: '14px', 
+                    fontWeight: 900, 
+                    textDecoration: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: '#cf1f28', // Slightly more vibrant red
-                    color: '#fff',
-                    padding: '15px 0',
-                    borderRadius: '10px',
-                    fontWeight: 700,
-                    fontSize: '14px',
-                    boxShadow: '0 4px 15px rgba(207, 31, 40, 0.3)'
-                  }} 
-                  onClick={() => {
-                    localStorage.setItem("uptown-preferred-branch", branch.slug);
-                  }}>
+                    boxShadow: '0 10px 25px rgba(185, 28, 28, 0.4)'
+                  }} className="order-btn">
                     {isAr ? "اطلب الآن" : "Order Now"}
                   </a>
                 </div>
@@ -220,25 +211,6 @@ export function BranchGrid({ branches, lang = "ar" }: Props) {
         })}
       </div>
       <style jsx>{`
-        @keyframes fadeInSimple {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .simple-branch-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-          border-color: #ddd;
-        }
-        .simple-branch-card:hover .branch-img {
-          transform: scale(1.03);
-        }
-        .minimal-btn:hover {
-          opacity: 0.85;
-        }
-        .zone-btn-minimal:hover {
-          color: #000;
-          background: #f0f0f0;
-        }
         @media (max-width: 768px) {
           .simple-branch-grid {
             grid-template-columns: 1fr;

@@ -20,12 +20,7 @@ export default async function CheckoutPage({ params }: CheckoutPageProps) {
     <div className="ultra-checkout-shell" style={{ minHeight: '100vh', background: 'var(--luxury-cream)', paddingBottom: '100px' }}>
       <div className="checkout-page" style={{ maxWidth: '900px', margin: '0 auto', padding: '120px 24px' }}>
         
-        <div style={{ display: "flex", alignItems: "center", marginBottom: 40, gap: 20 }}>
-          <a href={`/menu/${branch.slug}`} className="ultra-action-btn" style={{ width: 'auto', padding: '0 24px', borderRadius: '12px', height: '50px', display: 'flex', alignItems: 'center', gap: '10px', background: '#000', color: '#fff' }}>
-            <span style={{ fontWeight: 800 }}>الرجوع للمنيو</span>
-          </a>
-          <h1 className="ultra-title" style={{ margin: 0, fontSize: "2.5rem", color: '#000' }}>إتمام الطلب</h1>
-        </div>
+
 
         <CheckoutFormWrapper branch={branch} settings={settings as any} lang="ar" />
 

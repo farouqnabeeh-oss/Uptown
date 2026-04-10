@@ -5,14 +5,20 @@ export async function seedRestaurantData() {
 
   // 1. Categories based on real menu
   const categories = [
-    { name_ar: "برجر لحم", name_en: "Beef Burgers", sort_order: 1, is_active: true, icon_class: "🍔" },
-    { name_ar: "برجر دجاج", name_en: "Chicken Burgers", sort_order: 2, is_active: true, icon_class: "🍗" },
-    { name_ar: "ساندويتشات", name_en: "Sandwiches", sort_order: 3, is_active: true, icon_class: "🥪" },
-    { name_ar: "وجبات عائلية وبوكسات", name_en: "Family Meals & Boxes", sort_order: 4, is_active: true, icon_class: "🍱" },
-    { name_ar: "مقبلات", name_en: "Appetizers", sort_order: 5, is_active: true, icon_class: "🍟" },
-    { name_ar: "مشروبات باردة", name_en: "Cold Drinks", sort_order: 6, is_active: true, icon_class: "🥤" },
-    { name_ar: "مشروبات ساخنة", name_en: "Hot Drinks", sort_order: 7, is_active: true, icon_class: "☕" },
-    { name_ar: "حلويات", name_en: "Desserts", sort_order: 8, is_active: true, icon_class: "🍰" },
+    { name_ar: "بيرجر", name_en: "Burgers", sort_order: 13, is_active: true, icon_class: "🍔", image_path: "/images/file-4d47862d-9ad6-4c84-bb82-b70d9f7ce255.webp" },
+    { name_ar: "ساندويشات", name_en: "Sandwiches", sort_order: 1, is_active: true, icon_class: "🥪" },
+    { name_ar: "وجبات رئيسية", name_en: "Main Meals", sort_order: 2, is_active: true, icon_class: "🍽️" },
+    { name_ar: "أجنحة", name_en: "Wings", sort_order: 3, is_active: true, icon_class: "🍗" },
+    { name_ar: "وجبات الأطفال", name_en: "Kids Meals", sort_order: 4, is_active: true, icon_class: "🧸" },
+    { name_ar: "سلطات", name_en: "Salads", sort_order: 5, is_active: true, icon_class: "🥗" },
+    { name_ar: "قهوة باردة", name_en: "Cold Coffee", sort_order: 6, is_active: true, icon_class: "🧊" },
+    { name_ar: "سموذي طبيعي", name_en: "Natural Smoothie", sort_order: 7, is_active: true, icon_class: "🥤" },
+    { name_ar: "ميلك شيك", name_en: "Milkshake", sort_order: 8, is_active: true, icon_class: "🥤" },
+    { name_ar: "مشروبات ساخنة", name_en: "Hot Drinks", sort_order: 9, is_active: true, icon_class: "☕" },
+    { name_ar: "حلويات", name_en: "Desserts", sort_order: 10, is_active: true, icon_class: "🍰" },
+    { name_ar: "مشروبات باردة", name_en: "Cold Drinks", sort_order: 11, is_active: true, icon_class: "🥤" },
+    { name_ar: "أراجيل", name_en: "Hookah", sort_order: 12, is_active: true, icon_class: "💨" },
+    { name_ar: "مقبلات", name_en: "Appetizers", sort_order: 14, is_active: true, icon_class: "🍟", image_path: "/images/img-2398-a9a9219e-ca4c-43ed-8365-127be873e542.jpeg" },
   ];
 
   const { data: catData, error: catError } = await supabase
@@ -29,355 +35,516 @@ export async function seedRestaurantData() {
 
   // 2. Products
   const products = [
-    // Beef Burgers
-    {
-      name_ar: "أبتاون برجر",
-      name_en: "Uptown Burger",
-      description_ar: "شريحة لحم دبل، بصل مكرمل، خس، طماطم، جبنة شيدر، وصوص أبتاون",
-      description_en: "Double beef patty, caramelized onions, lettuce, tomato, cheddar cheese, and Uptown sauce",
-      base_price: 35,
-      category_id: categoryMap["Beef Burgers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name_ar: "ترافل برجر",
-      name_en: "Truffle Burger",
-      description_ar: "شريحة لحم بصوص الترافل الفاخر، مشروم، جبنة سويسرية",
-      description_en: "Beef patty with premium truffle sauce, mushrooms, and Swiss cheese",
-      base_price: 37,
-      category_id: categoryMap["Beef Burgers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name_ar: "سموك هاوس برجر",
-      name_en: "Smokehouse Burger",
-      description_ar: "شريحة لحم، بيكون بقري، حلقات بصل مقلية، صوص الباربكيو المدخن",
-      description_en: "Beef patty, beef bacon, fried onion rings, smoked BBQ sauce",
-      base_price: 33,
-      category_id: categoryMap["Beef Burgers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name_ar: "كلاسيك برجر",
-      name_en: "Classic Burger",
-      description_ar: "برجر كلاسيكي مع خس، طماطم، مخلل وصوص خاص",
-      description_en: "Classic burger with lettuce, tomato, pickles, and special sauce",
-      base_price: 28,
-      category_id: categoryMap["Beef Burgers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=800&auto=format&fit=crop"
-    },
-    // Chicken Burgers
-    {
-        name_ar: "دجاج كرسبي",
-        name_en: "Crispy Chicken",
-        description_ar: "صدر دجاج مقرمش مع الخس والمايونيز والجبنة",
-        description_en: "Crispy chicken breast with lettuce, mayonnaise, and cheese",
-        base_price: 25,
-        category_id: categoryMap["Chicken Burgers"],
-        is_active: true,
-        has_meal_option: true,
-        image_path: "https://images.unsplash.com/photo-1606755962773-d32172e7a202?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "بوفالو دجاج برجر",
-        name_en: "Buffalo Chicken Burger",
-        description_ar: "دجاج مقرمش مغمس بصوص البوفالو الحار مع المخلل والمايونيز",
-        description_en: "Crispy chicken tossed in spicy buffalo sauce with pickles and mayonnaise",
-        base_price: 27,
-        category_id: categoryMap["Chicken Burgers"],
-        is_active: true,
-        has_meal_option: true,
-        image_path: "https://images.unsplash.com/photo-1615486171448-4fdcf594d215?q=80&w=800&auto=format&fit=crop"
-    },
     // Sandwiches
     {
-        name_ar: "ساندويتش فيلي ستيك",
-        name_en: "Philly Steak Sandwich",
-        description_ar: "شرائح لحم بقري ريب آي مع البصل والمشروم والفلفل والجبنة المذابة",
-        description_en: "Ribeye steak slices with onions, mushrooms, peppers and melted cheese",
-        base_price: 30,
-        category_id: categoryMap["Sandwiches"],
-        is_active: true,
-        has_meal_option: true,
-        image_path: "https://images.unsplash.com/photo-1628198539209-77f6bbfd0ec5?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "ساندويتش فاهيتا دجاج",
-        name_en: "Chicken Fajita Sandwich",
-        description_ar: "دجاج متبل على الطريقة المكسيكية مع الفلفل الألوان والبصل والجبنة",
-        description_en: "Mexican spiced chicken with bell peppers, onions and cheese",
-        base_price: 25,
-        category_id: categoryMap["Sandwiches"],
-        is_active: true,
-        has_meal_option: true,
-        image_path: "https://images.unsplash.com/photo-1626244405389-7008cf585d82?q=80&w=800&auto=format&fit=crop"
-    },
-    // Family Boxes
-    {
-        name_ar: "بوكس التوفير",
-        name_en: "Saver Box",
-        description_ar: "4 برجر كلاسيك، 2 بطاطس حجم عائلي، 1 بيبسي لتر",
-        description_en: "4 Classic burgers, 2 family fries, 1L Pepsi",
-        base_price: 110,
-        category_id: categoryMap["Family Meals & Boxes"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop"
-    },
-    // Appetizers
-    {
-        name_ar: "بطاطا مقلية صينية",
-        name_en: "French Fries",
-        description_ar: "بطاطا مقرمشة ذهبية",
-        description_en: "Golden crispy french fries",
-        base_price: 10,
-        category_id: categoryMap["Appetizers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "أصابع الموزاريلا",
-        name_en: "Mozzarella Sticks",
-        description_ar: "أصابع موزاريلا مقرمشة تقدم مع صوص المارينارا (5 قطع)",
-        description_en: "Crispy mozzarella sticks served with marinara sauce (5 pieces)",
-        base_price: 15,
-        category_id: categoryMap["Appetizers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1531749668029-2be8c962bda5?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "أجنحة الدجاج",
-        name_en: "Chicken Wings",
-        description_ar: "أجنحة دجاج مقلية بصوص البافلو أو الباربكيو (6 قطع)",
-        description_en: "Fried chicken wings tossed in buffalo or BBQ sauce (6 pieces)",
-        base_price: 20,
-        category_id: categoryMap["Appetizers"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1565299585323-38d1b7371a58?q=80&w=800&auto=format&fit=crop"
-    },
-    // Drinks
-    {
-        name_ar: "بيبسي",
-        name_en: "Pepsi",
-        description_ar: "علبة بيبسي",
-        description_en: "Pepsi Can",
-        base_price: 4,
-        category_id: categoryMap["Cold Drinks"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "سفن أب",
-        name_en: "7up",
-        description_ar: "علبة سفن أب",
-        description_en: "7up Can",
-        base_price: 4,
-        category_id: categoryMap["Cold Drinks"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "ماء",
-        name_en: "Water",
-        description_ar: "زجاجة مياه معدنية صغيرة",
-        description_en: "Small mineral water bottle",
-        base_price: 3,
-        category_id: categoryMap["Cold Drinks"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?q=80&w=800&auto=format&fit=crop"
-    },
-    // Desserts
-    {
-        name_ar: "تشيز كيك نيويورك",
-        name_en: "New York Cheesecake",
-        description_ar: "قطعة من التشيز كيك الكلاسيكي بصوص الفراولة",
-        description_en: "A slice of classic cheesecake with strawberry sauce",
-        base_price: 20,
-        category_id: categoryMap["Desserts"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        name_ar: "مولتن شوكليت كيك",
-        name_en: "Molten Chocolate Cake",
-        description_ar: "كيك الشوكولاتة الدافئ مع الآيس كريم",
-        description_en: "Warm chocolate cake with ice cream",
-        base_price: 22,
-        category_id: categoryMap["Desserts"],
-      is_active: true,
-      all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      name_ar: "أولد سكول برجر",
-      name_en: "Old School Burger",
-      description_ar: "شريحة لحم كلاسيكية مع إضافات أبتاون الأصلية",
-      description_en: "Classic beef patty with original Uptown additions",
-      base_price: 35,
-      category_id: categoryMap["Beef Burgers"],
+      name_ar: "ساندويش دجاج مقلي مقرمش (كريسبي)",
+      name_en: "Crispy Chicken Sandwich",
+      description_ar: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون",
+      description_en: "150g crispy chicken, lettuce, tomato, onions, pickles, and Uptown sauce",
+      base_price: 25,
+      category_id: categoryMap["Sandwiches"],
       is_active: true,
       all_branches: true,
       has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/crispy-fried-chicken-sandwich__nxer45s6cek81pp.jpg"
     },
     {
-      name_ar: "سماش برجر",
-      name_en: "Smash Burger",
-      description_ar: "شريحتين رقيقتين من اللحم المشوي، جبنة، صوص سماش",
-      description_en: "Two thin smashed beef patties, cheese, smash sauce",
-      base_price: 32,
-      category_id: categoryMap["Beef Burgers"],
+      name_ar: "ساندويش دجاج مشوي",
+      name_en: "Grilled Chicken Sandwich",
+      description_ar: "150 غرام . خس . بندورة . مخلل . بصل . صوص اب تاون",
+      description_en: "150g grilled chicken, lettuce, tomato, pickles, onions, and Uptown sauce",
+      base_price: 25,
+      category_id: categoryMap["Sandwiches"],
       is_active: true,
       all_branches: true,
       has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/grilled-chicken-sandwich__0p8n3eb1fxkz4e1.jpg"
     },
     {
-      name_ar: "فيليه دجاج برجر",
-      name_en: "Chicken Filet Burger",
-      description_ar: "فيليه دجاج مشوي مع الخس والطماطم",
-      description_en: "Grilled chicken filet with lettuce and tomato",
+      name_ar: "ساندويش دجاج إيطالي",
+      name_en: "Italian Chicken Sandwich",
+      description_ar: "150 غرام . دجاج مشوي . ماشroom وايت صوص . خس . مخلل . بصل . صوص اب تاون",
+      description_en: "150g grilled chicken, mushroom white sauce, lettuce, pickles, onions, and Uptown sauce",
+      base_price: 25,
+      category_id: categoryMap["Sandwiches"],
+      is_active: true,
+      all_branches: true,
+      has_meal_option: true,
+      image_path: "/images/italian-chicken-sandwich__v8h8fvt2k4dudl7.jpg"
+    },
+    {
+      name_ar: "ساندويش مسحب فاهيتا",
+      name_en: "Fajita Chicken Sandwich",
+      description_ar: "150 غرام . دجاج مشوي . فلفل حلو ملون . ماشroom . بصل . بندورة . صوص مكسيكي",
+      description_en: "150g grilled chicken, bell peppers, mushroom, onions, tomato, and Mexican sauce",
+      base_price: 25,
+      category_id: categoryMap["Sandwiches"],
+      is_active: true,
+      all_branches: true,
+      has_meal_option: true,
+      image_path: "/images/fajita-chicken-sandwich__umcuqi5n4f72jbb.jpg"
+    },
+    {
+      name_ar: "ساندويش أسايدو",
+      name_en: "Asado Sandwich",
+      description_ar: "لحم عجل مطهو لأكثر من 5 ساعات . خس . بندورة وبصل مشوي . مخلل . صوص",
+      description_en: "Slow-cooked veal for over 5 hours, lettuce, grilled tomato and onions, pickles, and sauce",
+      base_price: 36,
+      category_id: categoryMap["Sandwiches"],
+      is_active: true,
+      all_branches: true,
+      has_meal_option: true,
+      image_path: "/images/asado-sandwich__wo23euzc8pcflgm.jpg"
+    },
+    {
+      name_ar: "ساندويش حلومي",
+      name_en: "Halloumi Sandwich",
+      description_ar: "150 غرام . جبنة حلومي . صوص رانش . خس . بصل . بندورة . مخلل",
+      description_en: "150g halloumi cheese, ranch sauce, lettuce, onions, tomato, pickles",
+      base_price: 25,
+      category_id: categoryMap["Sandwiches"],
+      is_active: true,
+      all_branches: true,
+      has_meal_option: false,
+      image_path: "/images/halloumi-sandwich__1vuq1k5kk4zhdtn.jpg"
+    },
+
+    // Main Meals
+    {
+      name_ar: "ستيك دجاج مشوي",
+      name_en: "Grilled Chicken Steak",
+      description_ar: "خضار سوتيه . ماشد بوتيتو",
+      description_en: "Sautéed vegetables, mashed potatoes",
+      base_price: 45,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/grilled-chicken-steak__1i9bertljdazgo6.jpg"
+    },
+    {
+      name_ar: "ريب أي ستيك",
+      name_en: "Ribeye Steak",
+      description_ar: "ستيك ريب أي . خضار سوتيه . ماشد بوتيتو . وايت صوص",
+      description_en: "Ribeye steak, sautéed vegetables, mashed potatoes, and white sauce",
+      base_price: 90,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      has_meal_option: false,
+      image_path: "/images/ribeye-steak__ug7of6vwzmplsva.jpg"
+    },
+    {
+      name_ar: "فيليه ستيك",
+      name_en: "Fillet Steak",
+      description_ar: "ستيك فيليه . خضار سوتيه . ماشد بوتيتو . وايت صوص",
+      description_en: "Fillet steak, sautéed vegetables, mashed potatoes, and white sauce",
+      base_price: 70,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      has_meal_option: false,
+      image_path: "/images/beef-fillet-steak__1z530ggv6hnt6g0.webp"
+    },
+    {
+      name_ar: "دجاج فاهيتا مع أرز",
+      name_en: "Fajita Chicken with Rice",
+      description_ar: "دجاج . فلفل حلو . بصل . ماشroom . صوص مكسيكي",
+      description_en: "Chicken, bell peppers, onions, mushroom, and Mexican sauce",
+      base_price: 45,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/chicken-fajita-with-rice__2re3bdsltsnwkzv.jpg"
+    },
+    {
+      name_ar: "ستروجانوف دجاج مع أرز",
+      name_en: "Chicken Stroganoff with Rice",
+      description_ar: "دجاج . فلفل حلو . بصل . ماشroom . وايت صوص",
+      description_en: "Chicken, bell peppers, onions, mushroom, and white sauce",
+      base_price: 45,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/chicken-stroganoff-with-rice__nl0w7mlpkeq6dl9.jpg"
+    },
+    {
+      name_ar: "ستروجانوف لحمة مع أرز",
+      name_en: "Beef Stroganoff with Rice",
+      description_ar: "شرائح فيليه ستيك . فلفل حلو . بصل . ماشroom . وايت صوص",
+      description_en: "Fillet steak strips, bell peppers, onions, mushroom, and white sauce",
+      base_price: 60,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/beef-stroganoff-with-rice__pyr14b4rim9cnsg.jpg"
+    },
+    {
+      name_ar: "فوتوتشيني مع دجاج",
+      name_en: "Fettuccine with Chicken",
+      description_ar: "دجاج مشوي . فوتوتشيني . ماشroom . وايت صوص . جبنة بارميزان",
+      description_en: "Grilled chicken, fettuccine, mushroom, white sauce, and parmesan cheese",
+      base_price: 45,
+      category_id: categoryMap["Main Meals"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/chicken-fettuccine-alfredo__id5pl49u8j1t3kj.jpg"
+    },
+
+    // Wings
+    {
+      name_ar: "أجنحة مقلية مقرمشة",
+      name_en: "Crispy Fried Wings",
+      description_ar: "أجنحة دجاج مقلية مقرمشة",
+      description_en: "Crispy fried chicken wings",
+      base_price: 30,
+      category_id: categoryMap["Wings"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/crispy-fried-wings__8a79zxxqhvr0ihm.jpg"
+    },
+    {
+      name_ar: "أجنحة بصوص البافلو",
+      name_en: "Buffalo Wings",
+      description_ar: "أجنحة بصوص البافلو الحار",
+      description_en: "Spicy buffalo wings",
       base_price: 28,
-      category_id: categoryMap["Chicken Burgers"],
+      category_id: categoryMap["Wings"],
       is_active: true,
       all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1606755962773-d32172e7a202?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/buffalo-sauce-wings__hvhrz3c6wkwi56v.jpg"
     },
     {
-      name_ar: "ساندويش حبش مدخن",
-      name_en: "Smoked Turkey Sandwich",
-      description_ar: "شرائح الحبش المدخن مع الجبنة والخس",
-      description_en: "Smoked turkey slices with cheese and lettuce",
-      base_price: 20,
-      category_id: categoryMap["Sandwiches"],
+      name_ar: "أجنحة بصوص الباربيكيو",
+      name_en: "BBQ Wings",
+      description_ar: "أجنحة بصوص الباربيكيو المدخن",
+      description_en: "Smoked BBQ wings",
+      base_price: 28,
+      category_id: categoryMap["Wings"],
       is_active: true,
       all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1628198539209-77f6bbfd0ec5?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/bbq-sauce-wings__ut71ovptawjn1ai.jpg"
     },
     {
-      name_ar: "زنجر ساندويتش",
-      name_en: "Zinger Sandwich",
-      description_ar: "دجاج زنجر حار ومقرمش",
-      description_en: "Spicy and crispy Zinger chicken",
-      base_price: 22,
-      category_id: categoryMap["Sandwiches"],
+      name_ar: "أجنحة بصوص التيراكي",
+      name_en: "Teriyaki Wings",
+      description_ar: "أجنحة بصوص التيراكي",
+      description_en: "Teriyaki wings",
+      base_price: 28,
+      category_id: categoryMap["Wings"],
       is_active: true,
       all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1626244405389-7008cf585d82?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/teriyaki-sauce-wings__lle6d5attaszh53.jpg"
     },
     {
-      name_ar: "شاورما دجاج بخبز التورتيلا",
-      name_en: "Chicken Shawarma Wrap",
-      description_ar: "شاورما دجاج الطازجة في خبز التورتيلا والمثومة",
-      description_en: "Fresh chicken shawarma in tortilla bread with garlic sauce",
-      base_price: 15,
-      category_id: categoryMap["Sandwiches"],
+      name_ar: "أجنحة بصوص وثوم وليمون وبارميزان",
+      name_en: "Lemon Parmesan Wings",
+      description_ar: "أجنحة بصوص والثوم والليمون وجبنة البارميزان",
+      description_en: "Garlic, lemon and parmesan wings",
+      base_price: 28,
+      category_id: categoryMap["Wings"],
       is_active: true,
       all_branches: true,
-      has_meal_option: true,
-      image_path: "https://images.unsplash.com/photo-1529144415895-6aaf8be872fb?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/garlic-lemon-parmesan-wings__pu0bcxvhvsozf63.jpg"
     },
     {
-      name_ar: "ودجز",
-      name_en: "Wedges",
-      description_ar: "بطاطس ودجز المتبلة",
-      description_en: "Seasoned potato wedges",
-      base_price: 12,
-      category_id: categoryMap["Appetizers"],
+      name_ar: "أجنحة بصوص الثومة والليمون",
+      name_en: "Garlic Lemon Wings",
+      description_ar: "أجنحة بصوص الثومة والليمون",
+      description_en: "Garlic and lemon wings",
+      base_price: 28,
+      category_id: categoryMap["Wings"],
       is_active: true,
       all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/garlic-lemon-wings__871mbhqqt1p5bk7.jpg"
     },
     {
-      name_ar: "حلقات البصل",
-      name_en: "Onion Rings",
-      description_ar: "حلقات بصل مقرمشة وذهبية",
-      description_en: "Crispy golden onion rings",
-      base_price: 14,
-      category_id: categoryMap["Appetizers"],
+      name_ar: "أجنحة بصوص السويت شيلي",
+      name_en: "Sweet Chili Wings",
+      description_ar: "أجنحة بصوص السويت شيلي",
+      description_en: "Sweet chili wings",
+      base_price: 28,
+      category_id: categoryMap["Wings"],
       is_active: true,
       all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/sweet-chili-wings__kdipx15msj2668u.jpg"
+    },
+
+    // Kids Meals
+    {
+      name_ar: "كيدز بيرجر لحمة",
+      name_en: "Kids Beef Burger",
+      description_ar: "الوجبة تشمل بطاطا مقلية وعصير",
+      description_en: "Meal includes french fries and juice",
+      base_price: 23,
+      category_id: categoryMap["Kids Meals"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/kids-beef-burger__vhek3ygzet469f2.jpg"
     },
     {
-      name_ar: "ناجتس الدجاج",
-      name_en: "Chicken Nuggets",
-      description_ar: "قطع الناجتس (8 قطع)",
-      description_en: "Chicken nuggets (8 pieces)",
-      base_price: 16,
-      category_id: categoryMap["Appetizers"],
+      name_ar: "كيدز بيرجر دجاج",
+      name_en: "Kids Chicken Burger",
+      description_ar: "الوجبة تشمل بطاطا مقلية وعصير",
+      description_en: "Meal includes french fries and juice",
+      base_price: 23,
+      category_id: categoryMap["Kids Meals"],
       is_active: true,
       all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/file-4d47862d-9ad6-4c84-bb82-b70d9f7ce255.webp"
     },
     {
-      name_ar: "ميرندا",
-      name_en: "Miranda",
-      description_ar: "ميرندا برتقال باردة",
-      description_en: "Cold orange miranda",
-      base_price: 4,
-      category_id: categoryMap["Cold Drinks"],
+      name_ar: "بوب كورن دجاج",
+      name_en: "Chicken Popcorn",
+      description_ar: "الوجبة تشمل بطاطا مقلية وعصير",
+      description_en: "Meal includes french fries and juice",
+      base_price: 23,
+      category_id: categoryMap["Kids Meals"],
       is_active: true,
       all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop"
+      image_path: "/images/chicken-popcorn__8ql6ou2bhl45zed.jpg"
+    },
+
+    // Salads
+    {
+      name_ar: "سلطة سيزر",
+      name_en: "Caesar Salad",
+      description_ar: "خس . جبنة بارميزان . خبز محمص . صوص سيزر",
+      description_en: "Lettuce, parmesan cheese, croutons, and Caesar dressing",
+      base_price: 25,
+      category_id: categoryMap["Salads"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/caesar-salad-kgn4gpstowx0mu9-c9d70a64-0049-4b14-974b-dc68ac07791c.jpg"
     },
     {
-      name_ar: "ميلك شيك فراولة",
-      name_en: "Strawberry Milkshake",
-      description_ar: "ميلك شيك منعش بنكهة الفراولة",
-      description_en: "Refreshing strawberry milkshake",
-      base_price: 18,
-      category_id: categoryMap["Cold Drinks"],
+      name_ar: "سلطة يونانية",
+      name_en: "Greek Salad",
+      description_ar: "خس . فلفل ملون . خيار . زيتون أسود . بندورة . ليمون . زيت زيتون . جبنة فيتا",
+      description_en: "Lettuce, bell peppers, cucumber, olives, tomato, lemon, olive oil, and feta cheese",
+      base_price: 30,
+      category_id: categoryMap["Salads"],
       is_active: true,
       all_branches: true,
-      has_meal_option: false,
-      image_path: "https://images.unsplash.com/photo-1579954115545-a95f9ab7a4ea?q=80&w=800&auto=format&fit=crop"
-    }
+      image_path: "/images/greek-salad__3ogmuh9isdbt41n.jpg"
+    },
+    {
+      name_ar: "سلطة جرجير",
+      name_en: "Arugula Salad",
+      description_ar: "جرجير . بندورة شيري . بصل أحمر . ليمون . زيت زيتون . سماق",
+      description_en: "Arugula, cherry tomatoes, red onion, lemon, olive oil, and sumac",
+      base_price: 25,
+      category_id: categoryMap["Salads"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/arugula-salad__pqxln7lhzdde5ww.jpg"
+    },
+    {
+      name_ar: "سلطة حلومي",
+      name_en: "Halloumi Salad",
+      description_ar: "خس . بندورة شيري . جبنة حلومي . صوص رانش",
+      description_en: "Lettuce, cherry tomatoes, halloumi cheese, and ranch dressing",
+      base_price: 35,
+      category_id: categoryMap["Salads"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/halloumi-salad__4yk717hcdec5vqt.jpg"
+    },
+    {
+      name_ar: "سلطة كينوا",
+      name_en: "Quinoa Salad",
+      description_ar: "كينوا . بقدونس . عسل . دبس رمان . زيت زيتون . ليمون . كرانبري . جوز . أناناس",
+      description_en: "Quinoa, parsley, honey, pomegranate molasses, olive oil, lemon, cranberry, walnut, and pineapple",
+      base_price: 30,
+      category_id: categoryMap["Salads"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/quinoa-salad__qr0exktqt76ov8j.jpg"
+    },
+    {
+      name_ar: "سلطة فتوش",
+      name_en: "Fattoush Salad",
+      description_ar: "خس ناعم . بندورة . خيار . فلفل . بصل أبيض . نعنع . خبز مقلي . سماق . ملح . دبس رمان",
+      description_en: "Lettuce, tomato, cucumber, pepper, white onion, mint, fried bread, sumac, salt, and pomegranate molasses",
+      base_price: 30,
+      category_id: categoryMap["Salads"],
+      is_active: true,
+      all_branches: true,
+      image_path: "/images/fattoush-salad__oxjgflscdmor62d.jpg"
+    },
+
+    // Cold Coffee
+    { name_ar: "سبانش لاتيه", name_en: "Spanish Latte", description_ar: "بريك قهوة بارد ومنعش", description_en: "Refreshing cold coffee break", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/spanish-latte__0j9ew7pi59r1fb6.jpg" },
+    { name_ar: "آيس كابتشينو", name_en: "Ice Cappuccino", description_ar: "كابتشينو مثلج مع رغوة كثيفة", description_en: "Iced cappuccino with thick foam", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-cappuccino__nh76n3rx78rmkfm.jpg" },
+    { name_ar: "آيس لاتيه", name_en: "Ice Latte", description_ar: "لاتيه كلاسيكي مثلج", description_en: "Classic iced latte", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-latte__igw1jlq8obg8clj.jpg" },
+    { name_ar: "آيس كوفي", name_en: "Ice Coffee", description_ar: "قهوة مثلجة منعشة", description_en: "Refreshing iced coffee", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-coffee__x9fwu0nnonmt1bf.jpg" },
+    { name_ar: "آيس كارميل لاتيه", name_en: "Ice Caramel Latte", description_ar: "لاتيه مثلج مع صوص الكارميل", description_en: "Iced latte with caramel sauce", base_price: 19, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-caramel-latte__7s8czuyblnkgk6r.jpg" },
+    { name_ar: "آيس أمريكانو", name_en: "Ice Americano", description_ar: "أمريكانو كلاسيكي مثلج", description_en: "Classic iced americano", base_price: 16, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-americano__2ignz0x5yz4sxhu.jpg" },
+    { name_ar: "فرابتشينو", name_en: "Frappuccino", description_ar: "مشروب فرابتشينو الغني", description_en: "Rich frappuccino drink", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/frappuccino__11jotuwxtm2czjo.jpg" },
+    { name_ar: "آيس موكا", name_en: "Ice Mocha", description_ar: "موكا مثلجة بلمسة شوكولاتة", description_en: "Iced mocha with a chocolate touch", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-mocha__shnp5dn9oggwun7.jpg" },
+    { name_ar: "آيس وايت موكا", name_en: "Ice White Mocha", description_ar: "وايت موكا مثلجة", description_en: "Iced white mocha", base_price: 17, category_id: categoryMap["Cold Coffee"], is_active: true, all_branches: true, image_path: "/images/iced-white-mocha__rcg0h9ji0z1trnx.jpg" },
+
+    // Natural Smoothie
+    { name_ar: "سموذي طبيعي", name_en: "Natural Smoothie", description_ar: "تشكيلة سموذي فواكه طبيعية", description_en: "Assorted natural fruit smoothies", base_price: 17, category_id: categoryMap["Natural Smoothie"], is_active: true, all_branches: true, image_path: "/images/natural-smoothie__c9pnbwbvwhncuvs.jpg" },
+
+    // Milkshake
+    { name_ar: "ميلك شيك", name_en: "Milkshake", description_ar: "ميلك شيك غني بعدة نكهات", description_en: "Rich milkshakes in various flavors", base_price: 17, category_id: categoryMap["Milkshake"], is_active: true, all_branches: true, image_path: "/images/milkshakes__pgt1ljcxf6qma9t.jpg" },    // Hot Drinks
+    { name_ar: "شاي", name_en: "Tea", description_ar: "شاي كلاسيكي ساخن", description_en: "Classic hot tea", base_price: 8, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/tea__68ipsqrolope9un.jpg" },
+    { name_ar: "اسبريسو", name_en: "Espresso", description_ar: "اسبريسو كلاسيكي", description_en: "Classic espresso", base_price: 8, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/espresso__e6jr0mu46qix1iw.jpg" },
+    { name_ar: "قهوة عربية", name_en: "Arabic Coffee", description_ar: "قهوة عربية أصيلة", description_en: "Authentic Arabic coffee", base_price: 13, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/arabic-coffee__nrx56q4y8ik0dt1.jpg" },
+    { name_ar: "أمريكانو", name_en: "Americano", description_ar: "قهوة أمريكانو ساخنة", description_en: "Hot Americano coffee", base_price: 13, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/americano__ikrmozgl4db883m.jpg" },
+    { name_ar: "موكا", name_en: "Mocha", description_ar: "مزيج ساخن من القهوة والكاكاو", description_en: "Hot mix of coffee and cocoa", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/mocha__nruytezewx8c3t4.jpg" },
+    { name_ar: "وايت موكا", name_en: "White Mocha", description_ar: "موكا ساخنة بالشوكولاتة البيضاء", description_en: "Hot white chocolate mocha", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/white-mocha__6ch77h9v3dnxy1k.jpg" },
+    { name_ar: "كابتشينو", name_en: "Cappuccino", description_ar: "كابتشينو كلاسيكي ساخن", description_en: "Classic hot cappuccino", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/cappuccino__jzn3vtp7cja8809.webp" },
+    { name_ar: "لاتيه", name_en: "Latte", description_ar: "لاتيه كلاسيكي ساخن", description_en: "Classic hot latte", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/latte__kgf531y5zc8pm74.jpg" },
+    { name_ar: "شاي لاتيه", name_en: "Tea Latte", description_ar: "شاي بلمسة من الحليب", description_en: "Tea with a milky touch", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/tea-latte__lciq1bb4qgw7zfi.jpg" },
+    { name_ar: "بندق", name_en: "Hazelnut Drink", description_ar: "مزيج ساخن بنكهة البندق", description_en: "Hot mix with hazelnut flavor", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/hazelnut__ru44q1bkipzkn48.jpg" },
+    { name_ar: "هوت تشوكليت", name_en: "Hot Chocolate", description_ar: "شوكولاتة ساخنة غنية", description_en: "Rich hot chocolate", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/hot-chocolate__v09sja0o7rcic8x.jpg" },
+    { name_ar: "إيطاليان تشوكليت", name_en: "Italian Chocolate", description_ar: "شوكولاتة إيطالية ساخنة كثيفة", description_en: "Thick Italian hot chocolate", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/italian-chocolate__x4nkeo37cxq9lab.jpg" },
+    { name_ar: "مكس أعشاب", name_en: "Herbal Mix", description_ar: "مزيج أعشاب برية ساخنة", description_en: "Hot wild herbal mix", base_price: 10, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/herbal-mix__7hokmq4lw78tzn6.jpg" },
+    { name_ar: "سبانش لاتيه", name_en: "Hot Spanish Latte", description_ar: "سبانش لاتيه ساخن", description_en: "Hot Spanish latte", base_price: 16, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/spanish-latte__8tnujlrujxfzigl.jpg" },
+    { name_ar: "نسكافيه", name_en: "Nescafe", description_ar: "نسكافيه كلاسيكي ساخن", description_en: "Classic hot Nescafe", base_price: 13, category_id: categoryMap["Hot Drinks"], is_active: true, all_branches: true, image_path: "/images/nescafe__quyge4un0omih97.webp" },
+
+    // Desserts
+    { name_ar: "وافل مع آيس كريم", name_en: "Waffle with Ice Cream", description_ar: "وافل ساخن يقدم مع الآيس كريم", description_en: "Hot waffle served with ice cream", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/waffle-with-ice-cream__x29z7g0cy8sbot9.jpg" },
+    { name_ar: "كريب مع شوكولاتة", name_en: "Crepe with Chocolate", description_ar: "كريب محشو بالشوكولاتة", description_en: "Crepe filled with chocolate", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/crepe-with-chocolate__6lfwdup297e7hd5.webp" },
+    { name_ar: "سوفليه مع بوظة", name_en: "Souffle with Ice Cream", description_ar: "سوفليه شوكولاتة ساخن مع الآيس كريم", description_en: "Hot chocolate souffle with ice cream", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/souffle-with-ice-cream__o375y0v76qe0ehb.jpg" },
+    { name_ar: "آيس كريم", name_en: "Ice Cream", description_ar: "3 سكوپ من نكهاتك المفضلة", description_en: "3 scoops of your favorite flavors", base_price: 15, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/ice-cream__ve92ex3v6cb5ol6.jpg" },
+    { name_ar: "سان سباستيان تشيز كيك", name_en: "San Sebastian Cheesecake", description_ar: "تشيز كيك سان سباستيان الكريمي", description_en: "Creamy San Sebastian cheesecake", base_price: 30, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/san-sebastian-cheesecake__crjozhzu3bx2i1k.jpg" },
+    { name_ar: "بلوبيري تشيز كيك", name_en: "Blueberry Cheesecake", description_ar: "تشيز كيك بلمسة بلوبيري", description_en: "Cheesecake with a blueberry touch", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/blueberry-cheesecake__163xoiwy7wlrfjb.jpg" },
+    { name_ar: "لوتس تشيز كيك", name_en: "Lotus Cheesecake", description_ar: "تشيز كيك بطبقة اللوتس", description_en: "Cheesecake with a lotus layer", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/lotus-cheesecake__dy0dgdb9jiizmu3.jpg" },
+    { name_ar: "تيراميسو", name_en: "Tiramisu", description_ar: "حلى التيراميسو الإيطالي", description_en: "Italian Tiramisu dessert", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/tiramisu__sxnp971n4vv4o5k.jpg" },
+    { name_ar: "تشوكليت كيك", name_en: "Chocolate Cake", description_ar: "كيك شوكولاتة غني", description_en: "Rich chocolate cake", base_price: 22, category_id: categoryMap["Desserts"], is_active: true, all_branches: true, image_path: "/images/chocolate-cake__xb561uywo403igv.jpg" },
+
+    // Cold Drinks
+    { name_ar: "كولا", name_en: "Cola", description_ar: "علبة كولا", description_en: "Cola Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/cola__f6o1p5tywou44t7.jpg" },
+    { name_ar: "كولا زيرو", name_en: "Cola Zero", description_ar: "علبة كولا زيرو", description_en: "Cola Zero Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/cola__f6o1p5tywou44t7.jpg" },
+    { name_ar: "كولا تشات", name_en: "Cola Chat", description_ar: "علبة كولا تشات", description_en: "Cola Chat Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/cola__f6o1p5tywou44t7.jpg" },
+    { name_ar: "كولا تشات زيرو", name_en: "Cola Chat Zero", description_ar: "علبة كولا تشات زيرو", description_en: "Cola Chat Zero Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/cola__f6o1p5tywou44t7.jpg" },
+    { name_ar: "سبرايت دايت", name_en: "Sprite Diet", description_ar: "علبة سبرايت دايت", description_en: "Sprite Diet Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/sprite__i4s36gw3g0d9m6i.jpg" },
+    { name_ar: "كابي", name_en: "Cappy Juice", description_ar: "عصير كابي", description_en: "Cappy Juice bottle", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/file-e09e95f3-e7b0-4c7e-8fc2-a0afa1d97e09.jpg" },
+    { name_ar: "سبرايت", name_en: "Sprite", description_ar: "علبة سبرايت", description_en: "Sprite Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/file-043bfd7e-021f-4dbf-aed9-ff810cc95e49.jpg" },
+    { name_ar: "فانتا", name_en: "Fanta", description_ar: "علبة فانتا", description_en: "Fanta Can", base_price: 6, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/fanta__qb9s0izcqjn38fr.jpg" },
+    { name_ar: "ماء صغير", name_en: "Small Water", description_ar: "زجاجة مياه صغيرة", description_en: "Small water bottle", base_price: 5, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/small-water__retkduxc2891b17.jpg" },
+    { name_ar: "بفاريا", name_en: "Bavaria", description_ar: "شراب بفاريا بر باردة", description_en: "Cold Bavaria drink", base_price: 8, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/bavaria__g0tdpqe9yr51l45.jpg" },
+    { name_ar: "صودا", name_en: "Soda", description_ar: "ماء صودا", description_en: "Soda water", base_price: 8, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/soda__28xcya6e1tmloih.jpg" },
+    { name_ar: "XL", name_en: "XL Energy Drink", description_ar: "مشروب طاقة XL", description_en: "XL Energy Drink", base_price: 8, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/xl__l07thqasq1gfrd8.jpg" },
+    { name_ar: "آيس فانيلا", name_en: "Ice Vanilla", description_ar: "شراب منعش بنكهة الفانيلا", description_en: "Refreshing ice vanilla drink", base_price: 17, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/iced-vanilla__cf85firw7etrfpb.jpg" },
+    { name_ar: "آيس تي", name_en: "Ice Tea", description_ar: "شاي مثلج منعش", description_en: "Refreshing iced tea", base_price: 17, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/iced-tea__7xvf02dww34t6g9.jpg" },
+    { name_ar: "آيس تشوكليت", name_en: "Ice Chocolate", description_ar: "شوكولاتة مثلجة غنية", description_en: "Rich iced chocolate", base_price: 17, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/iced-chocolate__n5gge2vfh6dvahl.jpg" },
+    { name_ar: "موميتو", name_en: "Mojito", description_ar: "موهيتو منعش للموميتو", description_en: "Refreshing mojito drink", base_price: 17, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/mojito__dnldrs18pec0our.jpg" },
+    { name_ar: "عصير", name_en: "Juice", description_ar: "عصير فواكه طازج", description_en: "Fresh fruit juice", base_price: 16, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/juice__xe7kdad5ruvmdwq.jpg" },
+    { name_ar: "كوكتيل مع بوظة", name_en: "Cocktail with Ice Cream", description_ar: "كوكتيل فواكه مع الآيس كريم", description_en: "Fruit cocktail with ice cream", base_price: 22, category_id: categoryMap["Cold Drinks"], is_active: true, all_branches: true, image_path: "/images/cocktail-with-ice-cream__8drtk81n7t43qxa.jpg" },
+
+    // Hookah
+    { name_ar: "أرجيلة", name_en: "Hookah", description_ar: "أرجيلة بنكهات متنوعة", description_en: "Hookah with various flavors", base_price: 30, category_id: categoryMap["Hookah"], is_active: true, all_branches: true, image_path: "/images/shisha__3rtwtm1vhjem729.jpg" },
+
+    // Burgers
+    { name_ar: "كلاسيك تشيز بيرجر", name_en: "Classic Cheese Burger", description_ar: "120 غرام . جبنة تشيدر . خس . بندورة . بصل . صوص اب تاون", description_en: "120g, cheddar, lettuce, tomato, onions, uptown sauce", base_price: 23, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/classic-cheeseburger__0x1e3y1qv68eiip.jpg" },
+    { name_ar: "سماش بيرجر", name_en: "Smash Burger", description_ar: "240 غرام . جبنة تشيدر . بندورة . بصل . صوص اب تاون", description_en: "240g, double cheddar, tomato, onions, uptown sauce", base_price: 35, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/smashed-burger__f4vm70uiqpdg28s.jpg" },
+    { name_ar: "باربيكيو بيرجر", name_en: "BBQ Burger", description_ar: "150 غرام . خس . جبنة موزاريلا . مخلل . بصل . باربيكيو . صوص اب تاون", description_en: "150g, mozzarella, pickles, onions, bbq sauce, uptown sauce", base_price: 25, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/bbq-burger__qw0nxdtpwc5rbst.jpg" },
+    { name_ar: "سويس ماشroom بيرجر", name_en: "Swiss Mushroom Burger", description_ar: "150 غرام . جبنة سويسرية . خس . بندورة . بصل . ماشroom . مخلل . صوص اب تاون", description_en: "150g, swiss cheese, lettuce, tomato, mushroom, onions, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/swiss-mushroom-burger__txtxxp1aifr4j8i.jpg" },
+    { name_ar: "ماشroom بيرجر", name_en: "Mushroom Burger", description_ar: "150 غرام . ماشroom . خس . بندورة . بصل . مخلل . صوص اب تاون", description_en: "150g, mushroom, lettuce, tomato, pickles, onions, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/mushroom-burger__s07zohznm42itsy.jpg" },
+    { name_ar: "ماشroom وايت صوص بيرجر", name_en: "Mushroom White Sauce Burger", description_ar: "150 غرام . ماشroom . وايت صوص . خس . بندورة . بصل . اب تاون صوص", description_en: "150g, mushroom, white sauce, lettuce, tomato, onions, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/mushroom-white-sauce-burger__4w37ua1o61radfn.jpg" },
+    { name_ar: "مكسيكانو بيرجر", name_en: "Mexicano Burger", description_ar: "150 غرام . خس . جبنة تشيدر . بندورة . بصل . هالبينو . صوص مكسيكي", description_en: "150g, cheddar, tomato, onions, jalapeno, mexican sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/mexicano-burger__l76kbi9btmcrvey.jpg" },
+    { name_ar: "أسايدو بيرجر", name_en: "Asado Burger", description_ar: "150 غرام . قطع لحم بقري فاخر مطهو لأكثر من 5 ساعات . خس . بندورة . بصل مشوي", description_en: "150g slow-cooked beef bits, lettuce, tomato, grilled onions", base_price: 36, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/asado-burger__2m81wutgpbyhv9z.jpg" },
+    { name_ar: "ريب أي بيرجر", name_en: "Ribeye Burger", description_ar: "150 غرام . قطعة كلاسيك . شرائح ستيك ريب أي 60 غرام . خس . بندورة . بصل . جبنة", description_en: "150g patty + ribeye strips, lettuce, tomato, onions, cheese", base_price: 45, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/ribeye-burger__8w4my5hb4xqt6zg.jpg" },
+    { name_ar: "أرابيكا بيرجر", name_en: "Arabica Burger", description_ar: "150 غرام . مكس من لحم الخاروف والعجل . خس . بندورة . بصل . مخلل . صوص", description_en: "150g lamb/veal mix, lettuce, tomato, onions, pickles, sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/arabica-burger__18bxeuobojgdvh9.jpg" },
+    { name_ar: "بلو تشيز بيرجر", name_en: "Blue Cheese Burger", description_ar: "150 غرام . بلو تشيز . عسل . مكسرات . خس . بندورة . بصل . مخلل . صوص اب تاون", description_en: "150g, blue cheese, honey, nuts, lettuce, tomato, onions, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/blue-cheese-burger__n6kolhf4bmk2o6c.jpg" },
+    { name_ar: "فرايد ايغ بيرجر", name_en: "Fried Egg Burger", description_ar: "150 غرام . بيض مقلي . جبنة تشيدر . خس . بندورة . بصل . مخلل . صوص اب تاون", description_en: "150g, fried egg, cheddar, lettuce, tomato, onions, pickles, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/fried-egg-burger__40j1tpwdob2wmoy.jpg" },
+    { name_ar: "ستيك بيرجر", name_en: "Steak Burger", description_ar: "150 غرام . قطعة كلاسيك . شرائح ستيك فيليه 60 غرام . خس . بندورة . بصل . مخلل", description_en: "150g patty + fillet strips, lettuce, tomato, onions, pickles", base_price: 36, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/steak-burger__e825653zpga0dw0.jpg" },
+    { name_ar: "دجاج كريسبي بيرجر", name_en: "Crispy Chicken Burger", description_ar: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون", description_en: "150g crispy chicken, lettuce, tomato, pickles, uptown sauce", base_price: 25, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/crispy-chicken-burger__49g1si6flsxx82w.jpg" },
+    { name_ar: "دجاج مشوي بيرجر", name_en: "Grilled Chicken Burger", description_ar: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون", description_en: "150g grilled chicken, lettuce, tomato, pickles, uptown sauce", base_price: 25, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/grilled-chicken-burger__bm22lgyfrl1ixtx.jpg" },
+    { name_ar: "نباتي بيرجر", name_en: "Vegetarian Burger", description_ar: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون . صوص رانش . جبنة حلومي", description_en: "150g vegetable patty, lettuce, tomato, onions, pickles, halloumi cheese", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/vegetarian-burger__h0no3tubpyaxbs0.jpg" },
+    { name_ar: "بصل مكرمل بيرجر", name_en: "Caramelized Onion Burger", description_ar: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون . بصل مكرمل", description_en: "150g, lettuce, tomato, onions, pickles, caramelized onion, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/caramelized-onion-burger__rpouw9135aroh54.jpg" },
+    { name_ar: "هاواين بيرجر", name_en: "Hawaiian Burger", description_ar: "150 غرام . خس . بندورة . قطعتين أناناس . مخلل . صوص اب تاون", description_en: "150g, lettuce, tomato, pineapple rings (2), pickles, uptown sauce", base_price: 30, category_id: categoryMap["Burgers"], is_active: true, all_branches: true, has_meal_option: true, image_path: "/images/hawaiian-burger__ev2mcri9z6vgqev.jpg" },
+
+    // Appetizers
+    { name_ar: "أصابع موزاريلا 3 قطع", name_en: "Mozzarella Sticks 3pcs", description_ar: "3 قطع أصابع موزاريلا مقلية مقرمشة", description_en: "3 pieces of crispy fried mozzarella sticks", base_price: 12, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/mozzarella-sticks-3-pcs__ilg2wr1vbnhdqns.jpg" },
+    { name_ar: "بوب كورن دجاج", name_en: "Chicken Popcorn (250g)", description_ar: "250 غرام من قطع الدجاج الصغيرة المقرمشة", description_en: "250g of small crispy chicken pieces", base_price: 22, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/popcorn-chicken__19q2tjl7h9lr4st.jpg" },
+    { name_ar: "أصابع دجاج 5 قطع", name_en: "Chicken Fingers 5pcs", description_ar: "5 قطع من أصابع الدجاج المقلية", description_en: "5 pieces of fried chicken finger sticks", base_price: 22, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/chicken-fingers-5-pcs__1sqwat9myfpnpzw.jpg" },
+    { name_ar: "تشيكن اند فرايز", name_en: "Chicken and Fries", description_ar: "قطع دجاج مقلية مع بطاطا", description_en: "Fried chicken pieces with french fries", base_price: 30, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/chicken-popcorn__8ql6ou2bhl45zed.jpg" },
+    { name_ar: "حلقات بصل 8 قطع", name_en: "Onion Rings 8pcs", description_ar: "8 قطع من حلقات البصل الذهبية", description_en: "8 pieces of golden onion rings", base_price: 10, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/onion-rings-8-pcs__6yyl6nhstlciej0.jpg" },
+    { name_ar: "بطاطا مقلية", name_en: "French Fries Appetizer", description_ar: "بطاطا مقلية كلاسيكية", description_en: "Classic crispy french fries", base_price: 7, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/french-fries__15besvty49y4dw2.jpg" },
+    { name_ar: "علبة جبنة", name_en: "Cheese Cup Appetizer", description_ar: "علبة صوص الجبنة الغنية", description_en: "Rich cheese sauce cup", base_price: 5, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/cheese-box__h2jnlaey0uea720.jpg" },
+    { name_ar: "بطاطا", name_en: "Specialty Potato Appetizer", description_ar: "بطاطا اب تاون الخاصة", description_en: "Special Uptown style potatoes", base_price: 12, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/img-2398-a9a9219e-ca4c-43ed-8365-127be873e542.jpeg" },
+    { name_ar: "فرينش فانيلا", name_en: "French Vanilla Specialty", description_ar: "مشروب بنكهة الفانيلا الفرنسية", description_en: "French vanilla flavored drink", base_price: 15, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/french-vanilla__u8v2md0zal4nvo9.jpg" },
+    { name_ar: "فيليه تشيز ستيك", name_en: "Philly Cheese Steak Specialty", description_ar: "180 غرام . لحم عجل فيليه مشوي . جبنة تشيدر . جبنة موزاريلا . صوص رانش . فلفل", description_en: "180g veal fillet, cheddar, mozzarella, ranch, peppers", base_price: 36, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/philly-cheesesteak-sandwich__zse9y6u7vbvhagu.jpg" },
+    { name_ar: "تورتيلا دجاج مقلي مقرمش", name_en: "Crispy Chicken Tortilla Specialty", description_ar: "140 غرام . كريسبي راب او مشوي . خس . مخلل . بصل . صوص مكسيكي . صوص اب تاون", description_en: "140g crispy/grilled chicken, lettuce, pickles, onions, mexican sauce", base_price: 18, category_id: categoryMap["Appetizers"], is_active: true, all_branches: true, image_path: "/images/crispy-chicken-tortilla-wrap__uij6r0qhdp8qpni.jpg" },
   ];
 
-  const { error: prodError } = await supabase
+  const { data: prodData, error: prodError } = await supabase
     .from("products")
-    .upsert(products, { onConflict: 'name_en' });
+    .upsert(products, { onConflict: 'name_en' })
+    .select();
 
   if (prodError) {
     console.error("Error seeding products:", prodError);
-  } else {
-    console.log("Seeding complete!");
   }
+
+  // 3. Branches
+  const branches = [
+    { name_ar: "الأرسال", name_en: "Al-Irsal", slug: "al-irsal", latitude: 31.9148, longitude: 35.2016, is_active: true, sort_order: 1, banner_image_path: "/images/alirsal.webp" },
+    { name_ar: "الطيرة", name_en: "Al-Tira", slug: "al-tira", latitude: 31.9056, longitude: 35.1950, is_active: true, sort_order: 2, banner_image_path: "/images/altira.webp" },
+  ];
+  await supabase.from("branches").upsert(branches, { onConflict: 'slug' });
+
+  // 3.5 Menu Banners
+  const menuBanners = [
+    { name: "Banner 1", image_path: "/images/panar1.jpeg", sort_order: 1, is_active: true },
+    { name: "Banner 2", image_path: "/images/panar2.jpeg", sort_order: 2, is_active: true },
+  ];
+  await supabase.from("menu_banners").upsert(menuBanners, { onConflict: 'image_path' });
+
+  // 4. Addon Groups
+  const burgerCatId = categoryMap["Burgers"];
+  if (burgerCatId) {
+    const addonGroups = [
+      { name_ar: "الحجم", name_en: "Size", category_id: burgerCatId, group_type: "sizes", is_required: true, allow_multiple: false, sort_order: 1 },
+      { name_ar: "النوع", name_en: "Type", category_id: burgerCatId, group_type: "types", is_required: true, allow_multiple: false, sort_order: 2 },
+      { name_ar: "إضافات", name_en: "Addons", category_id: burgerCatId, group_type: "addons", is_required: false, allow_multiple: true, sort_order: 3 },
+      { name_ar: "بدون", name_en: "Without", category_id: burgerCatId, group_type: "without", is_required: false, allow_multiple: true, sort_order: 4 },
+    ];
+
+    const { data: agData, error: agError } = await supabase.from("addon_groups").upsert(addonGroups, { onConflict: 'name_en,category_id' }).select();
+    if (!agError && agData) {
+      const agMap = Object.fromEntries(agData.map(g => [g.group_type, g.id]));
+
+      // Item mappings
+      const items = [
+        // Sizes
+        { addon_group_id: agMap["sizes"], name_ar: "120 غرام", name_en: "120g", price: 23, sort_order: 1 },
+        { addon_group_id: agMap["sizes"], name_ar: "150 غرام", name_en: "150g", price: 25, sort_order: 2 },
+        { addon_group_id: agMap["sizes"], name_ar: "240 غرام", name_en: "240g", price: 35, sort_order: 3 },
+        { addon_group_id: agMap["sizes"], name_ar: "300 غرام", name_en: "300g", price: 40, sort_order: 4 },
+        // Types
+        { addon_group_id: agMap["types"], name_ar: "بيرجر", name_en: "Burger", price: 0, sort_order: 1 },
+        { addon_group_id: agMap["types"], name_ar: "وجبة ( مع بطاطا ومشروب غازي )", name_en: "Meal (Fries & Drink)", price: 9, sort_order: 2 },
+        // Addons
+        { addon_group_id: agMap["addons"], name_ar: "قطعة لحمة 120 غرام", name_en: "Extra Meat 120g", price: 12, sort_order: 1 },
+        { addon_group_id: agMap["addons"], name_ar: "قطعة لحمة 150 غرام", name_en: "Extra Meat 150g", price: 15, sort_order: 2 },
+        { addon_group_id: agMap["addons"], name_ar: "بورشن ريب آي", name_en: "Ribeye Portion", price: 15, sort_order: 3 },
+        { addon_group_id: agMap["addons"], name_ar: "بورشن فيليه", name_en: "Fillet Portion", price: 12, sort_order: 4 },
+        { addon_group_id: agMap["addons"], name_ar: "جبنة على البرغر", name_en: "Extra Cheese", price: 3, sort_order: 5 },
+        { addon_group_id: agMap["addons"], name_ar: "بصل مكرمل", name_en: "Caramelized Onion", price: 3, sort_order: 6 },
+        { addon_group_id: agMap["addons"], name_ar: "ماشروم", name_en: "Mushroom", price: 3, sort_order: 7 },
+        { addon_group_id: agMap["addons"], name_ar: "خبز خالي من الجلوتين", name_en: "Gluten Free Bread", price: 5, sort_order: 8 },
+        { addon_group_id: agMap["addons"], name_ar: "أفوكادو", name_en: "Avocado", price: 5, sort_order: 9 },
+        { addon_group_id: agMap["addons"], name_ar: "هالبينو", name_en: "Jalapeno", price: 3, sort_order: 10 },
+        { addon_group_id: agMap["addons"], name_ar: "أصبعين موزاريلا", name_en: "2 Mozzarella Sticks", price: 8, sort_order: 11 },
+        { addon_group_id: agMap["addons"], name_ar: "3 حلقات بصل", name_en: "3 Onion Rings", price: 5, sort_order: 12 },
+        { addon_group_id: agMap["addons"], name_ar: "وايت صوص", name_en: "White Sauce", price: 5, sort_order: 13 },
+        // Without
+        { addon_group_id: agMap["without"], name_ar: "مخلل", name_en: "Pickles", price: 0, sort_order: 1 },
+        { addon_group_id: agMap["without"], name_ar: "بندورة", name_en: "Tomato", price: 0, sort_order: 2 },
+        { addon_group_id: agMap["without"], name_ar: "بصل", name_en: "Onion", price: 0, sort_order: 3 },
+        { addon_group_id: agMap["without"], name_ar: "جبنة", name_en: "Cheese", price: 0, sort_order: 4 },
+        { addon_group_id: agMap["without"], name_ar: "خس", name_en: "Lettuce", price: 0, sort_order: 5 },
+        { addon_group_id: agMap["without"], name_ar: "صوص", name_en: "Sauce", price: 0, sort_order: 6 },
+      ];
+      await supabase.from("addon_group_items").upsert(items, { onConflict: 'addon_group_id,name_en' });
+    }
+  }
+
+  console.log("Seeding complete!");
 }
 

@@ -34,6 +34,7 @@ export type Category = {
   branchId: number | null;
   sortOrder: number;
   iconClass: string | null;
+  imagePath?: string | null;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;

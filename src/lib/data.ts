@@ -61,6 +61,7 @@ function mapCategory(row: Record<string, unknown>): Category {
     branchId: row.branch_id === null ? null : Number(row.branch_id),
     sortOrder: Number(row.sort_order ?? 0),
     iconClass: (row.icon_class as string | null) ?? null,
+    imagePath: (row.image_path as string | null) ?? null,
     isActive: Boolean(row.is_active),
     createdAt: String(row.created_at ?? ""),
     updatedAt: String(row.updated_at ?? "")

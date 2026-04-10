@@ -1,16 +1,16 @@
 export const mockBranches = [
   {
     id: 1,
-    slug: "ramallah",
-    nameAr: "رام الله",
-    nameEn: "Ramallah",
+    slug: "al-irsal",
+    nameAr: "الأرسال",
+    nameEn: "Al-Irsal",
     phone: "0599123456",
     whatsApp: "+970599123456",
-    bannerImagePath: null,
+    bannerImagePath: "/images/alirsal.webp",
     discountPercent: 10,
     isActive: true,
     sortOrder: 1,
-    latitude: 31.902,
+    latitude: 31.906,
     longitude: 35.203,
     openingTime: "09:00",
     closingTime: "23:00",
@@ -25,23 +25,23 @@ export const mockBranches = [
   },
   {
     id: 2,
-    slug: "alBireh",
-    nameAr: "البيرة",
-    nameEn: "Al Bireh",
+    slug: "al-tira",
+    nameAr: "الطيرة",
+    nameEn: "Al-Tira",
     phone: "0599123457",
     whatsApp: "+970599123457",
-    bannerImagePath: null,
+    bannerImagePath: "/images/altira.webp",
     discountPercent: 0,
     isActive: true,
     sortOrder: 2,
-    latitude: 31.912,
-    longitude: 35.213,
+    latitude: 31.902,
+    longitude: 35.1873,
     openingTime: "10:00",
     closingTime: "02:00",
     deliveryFee: 15,
     deliveryZones: [
-      { name: "داخل البيرة", fee: 10 },
-      { name: "محيط البيرة", fee: 15 }
+      { name: "داخل الطيرة", fee: 10 },
+      { name: "محيط الطيرة", fee: 15 }
     ],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
@@ -49,24 +49,32 @@ export const mockBranches = [
 ];
 
 export const mockCategories = [
-  { id: 101, nameAr: "برجر لحم", nameEn: "Beef Burgers", branchId: null, sortOrder: 1, iconClass: "🍔", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 4 },
-  { id: 102, nameAr: "برجر دجاج", nameEn: "Chicken Burgers", branchId: null, sortOrder: 2, iconClass: "🍗", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 2 },
-  { id: 103, nameAr: "ساندويتشات", nameEn: "Sandwiches", branchId: null, sortOrder: 3, iconClass: "🥪", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 2 },
-  { id: 104, nameAr: "وجبات عائلية وبوكسات", nameEn: "Family Meals & Boxes", branchId: null, sortOrder: 4, iconClass: "🍱", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 1 },
-  { id: 105, nameAr: "مقبلات", nameEn: "Appetizers", branchId: null, sortOrder: 5, iconClass: "🍟", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 3 },
-  { id: 106, nameAr: "مشروبات باردة", nameEn: "Cold Drinks", branchId: null, sortOrder: 6, iconClass: "🥤", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 3 },
-  { id: 107, nameAr: "حلويات", nameEn: "Desserts", branchId: null, sortOrder: 8, iconClass: "🍰", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 2 }
+  { id: 101, nameAr: "ساندويشات", nameEn: "Sandwiches", branchId: null, sortOrder: 1, iconClass: "🥪", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 6 },
+  { id: 102, nameAr: "وجبات رئيسية", nameEn: "Main Meals", branchId: null, sortOrder: 2, iconClass: "🍽️", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 7 },
+  { id: 103, nameAr: "أجنحة", nameEn: "Wings", branchId: null, sortOrder: 3, iconClass: "🍗", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 7 },
+  { id: 104, nameAr: "وجبات الأطفال", nameEn: "Kids Meals", branchId: null, sortOrder: 4, iconClass: "🧸", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 3 },
+  { id: 105, nameAr: "سلطات", nameEn: "Salads", branchId: null, sortOrder: 5, iconClass: "🥗", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 6 },
+  { id: 106, nameAr: "قهوة باردة", nameEn: "Cold Coffee", branchId: null, sortOrder: 6, iconClass: "🧊", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 9 },
+  { id: 107, nameAr: "سموذي طبيعي", nameEn: "Natural Smoothie", branchId: null, sortOrder: 7, iconClass: "🥤", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 1 },
+  { id: 108, nameAr: "ميلك شيك", nameEn: "Milkshake", branchId: null, sortOrder: 8, iconClass: "🥤", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 1 },
+  { id: 109, nameAr: "مشروبات ساخنة", nameEn: "Hot Drinks", branchId: null, sortOrder: 9, iconClass: "☕", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 15 },
+  { id: 110, nameAr: "حلويات", nameEn: "Desserts", branchId: null, sortOrder: 10, iconClass: "🍰", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 9 },
+  { id: 111, nameAr: "مشروبات باردة", nameEn: "Cold Drinks", branchId: null, sortOrder: 11, iconClass: "🥤", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 18 },
+  { id: 112, nameAr: "أراجيل", nameEn: "Hookah", branchId: null, sortOrder: 12, iconClass: "💨", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 1 },
+  { id: 113, nameAr: "بيرجر", nameEn: "Burgers", branchId: null, sortOrder: 13, iconClass: "🍔", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 18 },
+  { id: 114, nameAr: "مقبلات", nameEn: "Appetizers", branchId: null, sortOrder: 14, iconClass: "🍟", isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), productCount: 11 }
 ];
 
 export const mockProducts = [
+  // Sandwiches
   {
     id: 1001,
-    nameAr: "أبتاون برجر",
-    nameEn: "Uptown Burger",
-    descriptionAr: "شريحة لحم دبل، بصل مكرمل، خس، طماطم، جبنة شيدر، وصوص أبتاون",
-    descriptionEn: "Double beef patty, caramelized onions, lettuce, tomato, cheddar cheese, and Uptown sauce",
-    basePrice: 35,
-    discount: 0,
+    nameAr: "ساندويش دجاج مقلي مقرمش (كريسبي)",
+    nameEn: "Crispy Chicken Sandwich",
+    descriptionAr: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون",
+    descriptionEn: "150g crispy chicken, lettuce, tomato, onions, pickles, and Uptown sauce",
+    basePrice: 25,
+    discount: 10,
     categoryId: 101,
     branchId: null,
     allBranches: true,
@@ -74,17 +82,17 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 1,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/crispy-fried-chicken-sandwich__nxer45s6cek81pp.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1002,
-    nameAr: "ترافل برجر",
-    nameEn: "Truffle Burger",
-    descriptionAr: "شريحة لحم بصوص الترافل الفاخر، مشروم، جبنة سويسرية",
-    descriptionEn: "Beef patty with premium truffle sauce, mushrooms, and Swiss cheese",
-    basePrice: 37,
-    discount: 0,
+    nameAr: "ساندويش دجاج مشوي",
+    nameEn: "Grilled Chicken Sandwich",
+    descriptionAr: "150 غرام . خس . بندورة . مخلل . بصل . صوص اب تاون",
+    descriptionEn: "150g grilled chicken, lettuce, tomato, pickles, onions, and Uptown sauce",
+    basePrice: 25,
+    discount: 10,
     categoryId: 101,
     branchId: null,
     allBranches: true,
@@ -92,17 +100,17 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 2,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/grilled-chicken-sandwich__0p8n3eb1fxkz4e1.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1003,
-    nameAr: "سموك هاوس برجر",
-    nameEn: "Smokehouse Burger",
-    descriptionAr: "شريحة لحم، بيكون بقري، حلقات بصل مقلية، صوص الباربكيو المدخن",
-    descriptionEn: "Beef patty, beef bacon, fried onion rings, smoked BBQ sauce",
-    basePrice: 33,
-    discount: 0,
+    nameAr: "ساندويش دجاج إيطالي",
+    nameEn: "Italian Chicken Sandwich",
+    descriptionAr: "150 غرام . دجاج مشوي . ماشroom وايت صوص . خس . مخلل . بصل . صوص اب تاون",
+    descriptionEn: "150g grilled chicken, mushroom white sauce, lettuce, pickles, onions, and Uptown sauce",
+    basePrice: 25,
+    discount: 10,
     categoryId: 101,
     branchId: null,
     allBranches: true,
@@ -110,17 +118,17 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 3,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/italian-chicken-sandwich__v8h8fvt2k4dudl7.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1004,
-    nameAr: "كلاسيك برجر",
-    nameEn: "Classic Burger",
-    descriptionAr: "برجر كلاسيكي مع خس، طماطم، مخلل وصوص خاص",
-    descriptionEn: "Classic burger with lettuce, tomato, pickles, and special sauce",
-    basePrice: 28,
-    discount: 0,
+    nameAr: "ساندويش مسحب فاهيتا",
+    nameEn: "Fajita Chicken Sandwich",
+    descriptionAr: "150 غرام . دجاج مشوي . فلفل حلو ملون . ماشroom . بصل . بندورة . صوص مكسيكي",
+    descriptionEn: "150g grilled chicken, bell peppers, mushroom, onions, tomato, and Mexican sauce",
+    basePrice: 25,
+    discount: 10,
     categoryId: 101,
     branchId: null,
     allBranches: true,
@@ -128,89 +136,311 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 4,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/fajita-chicken-sandwich__umcuqi5n4f72jbb.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1005,
-    nameAr: "دجاج كرسبي",
-    nameEn: "Crispy Chicken",
-    descriptionAr: "صدر دجاج مقرمش مع الخس والمايونيز والجبنة",
-    descriptionEn: "Crispy chicken breast with lettuce, mayonnaise, and cheese",
-    basePrice: 25,
-    discount: 0,
-    categoryId: 102,
+    nameAr: "ساندويش أسايدو",
+    nameEn: "Asado Sandwich",
+    descriptionAr: "لحم عجل مطهو لأكثر من 5 ساعات . خس . بندورة وبصل مشوي . مخلل . صوص",
+    descriptionEn: "Slow-cooked veal for over 5 hours, lettuce, grilled tomato and onions, pickles, and sauce",
+    basePrice: 36,
+    discount: 10,
+    categoryId: 101,
     branchId: null,
     allBranches: true,
     hasMealOption: true,
     hasDonenessOption: false,
-    sortOrder: 1,
+    sortOrder: 5,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1606755962773-d32172e7a202?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/asado-sandwich__wo23euzc8pcflgm.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1006,
-    nameAr: "بوفالو دجاج برجر",
-    nameEn: "Buffalo Chicken Burger",
-    descriptionAr: "دجاج مقرمش مغمس بصوص البوفالو الحار مع المخلل والمايونيز",
-    descriptionEn: "Crispy chicken tossed in spicy buffalo sauce with pickles and mayonnaise",
-    basePrice: 27,
-    discount: 0,
+    nameAr: "ساندويش حلومي",
+    nameEn: "Halloumi Sandwich",
+    descriptionAr: "150 غرام . جبنة حلومي . صوص رانش . خس . بصل . بندورة . مخلل",
+    descriptionEn: "150g halloumi cheese, ranch sauce, lettuce, onions, tomato, pickles",
+    basePrice: 25,
+    discount: 10,
+    categoryId: 101,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 6,
+    isActive: true,
+    imagePath: "/images/halloumi-sandwich__1vuq1k5kk4zhdtn.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Main Meals
+  {
+    id: 1007,
+    nameAr: "ستيك دجاج مشوي",
+    nameEn: "Grilled Chicken Steak",
+    descriptionAr: "خضار سوتيه . ماشد بوتيتو",
+    descriptionEn: "Sautéed vegetables, mashed potatoes",
+    basePrice: 45,
+    discount: 10,
     categoryId: 102,
     branchId: null,
     allBranches: true,
-    hasMealOption: true,
-    hasDonenessOption: false,
-    sortOrder: 2,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1615486171448-4fdcf594d215?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1007,
-    nameAr: "ساندويتش فيلي ستيك",
-    nameEn: "Philly Steak Sandwich",
-    descriptionAr: "شرائح لحم بقري ريب آي مع البصل والمشروم والفلفل والجبنة المذابة",
-    descriptionEn: "Ribeye steak slices with onions, mushrooms, peppers and melted cheese",
-    basePrice: 30,
-    discount: 0,
-    categoryId: 103,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: true,
+    hasMealOption: false,
     hasDonenessOption: false,
     sortOrder: 1,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1628198539209-77f6bbfd0ec5?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/grilled-chicken-steak__1i9bertljdazgo6.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1008,
-    nameAr: "ساندويتش فاهيتا دجاج",
-    nameEn: "Chicken Fajita Sandwich",
-    descriptionAr: "دجاج متبل على الطريقة المكسيكية مع الفلفل الألوان والبصل والجبنة",
-    descriptionEn: "Mexican spiced chicken with bell peppers, onions and cheese",
-    basePrice: 25,
-    discount: 0,
-    categoryId: 103,
+    nameAr: "ريب أي ستيك",
+    nameEn: "Ribeye Steak",
+    descriptionAr: "ستيك ريب أي . خضار سوتيه . ماشد بوتيتو . وايت صوص",
+    descriptionEn: "Ribeye steak, sautéed vegetables, mashed potatoes, and white sauce",
+    basePrice: 90,
+    discount: 10,
+    categoryId: 102,
     branchId: null,
     allBranches: true,
-    hasMealOption: true,
-    hasDonenessOption: false,
+    hasMealOption: false,
+    hasDonenessOption: true,
     sortOrder: 2,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1626244405389-7008cf585d82?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/ribeye-steak__ug7of6vwzmplsva.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1009,
-    nameAr: "بوكس التوفير",
-    nameEn: "Saver Box",
-    descriptionAr: "4 برجر كلاسيك، 2 بطاطس حجم عائلي، 1 بيبسي لتر",
-    descriptionEn: "4 Classic burgers, 2 family fries, 1L Pepsi",
-    basePrice: 110,
-    discount: 0,
+    nameAr: "فيليه ستيك",
+    nameEn: "Fillet Steak",
+    descriptionAr: "ستيك فيليه . خضار سوتيه . ماشد بوتيتو . وايت صوص",
+    descriptionEn: "Fillet steak, sautéed vegetables, mashed potatoes, and white sauce",
+    basePrice: 70,
+    discount: 10,
+    categoryId: 102,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: true,
+    sortOrder: 3,
+    isActive: true,
+    imagePath: "/images/beef-fillet-steak__1z530ggv6hnt6g0.webp",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1010,
+    nameAr: "دجاج فاهيتا مع أرز",
+    nameEn: "Fajita Chicken with Rice",
+    descriptionAr: "دجاج . فلفل حلو . بصل . ماشroom . صوص مكسيكي",
+    descriptionEn: "Chicken, bell peppers, onions, mushroom, and Mexican sauce",
+    basePrice: 45,
+    discount: 10,
+    categoryId: 102,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 4,
+    isActive: true,
+    imagePath: "/images/chicken-fajita-with-rice__2re3bdsltsnwkzv.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1011,
+    nameAr: "ستروجانوف دجاج مع أرز",
+    nameEn: "Chicken Stroganoff with Rice",
+    descriptionAr: "دجاج . فلفل حلو . بصل . ماشroom . وايت صوص",
+    descriptionEn: "Chicken, bell peppers, onions, mushroom, and white sauce",
+    basePrice: 45,
+    discount: 10,
+    categoryId: 102,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 5,
+    isActive: true,
+    imagePath: "/images/chicken-stroganoff-with-rice__nl0w7mlpkeq6dl9.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1012,
+    nameAr: "ستروجانوف لحمة مع أرز",
+    nameEn: "Beef Stroganoff with Rice",
+    descriptionAr: "شرائح فيليه ستيك . فلفل حلو . بصل . ماشroom . وايت صوص",
+    descriptionEn: "Fillet steak strips, bell peppers, onions, mushroom, and white sauce",
+    basePrice: 60,
+    discount: 10,
+    categoryId: 102,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 6,
+    isActive: true,
+    imagePath: "/images/beef-stroganoff-with-rice__pyr14b4rim9cnsg.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1013,
+    nameAr: "فوتوتشيني مع دجاج",
+    nameEn: "Fettuccine with Chicken",
+    descriptionAr: "دجاج مشوي . فوتوتشيني . ماشroom . وايت صوص . جبنة بارميزان",
+    descriptionEn: "Grilled chicken, fettuccine, mushroom, white sauce, and parmesan cheese",
+    basePrice: 45,
+    discount: 10,
+    categoryId: 102,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 7,
+    isActive: true,
+    imagePath: "/images/chicken-fettuccine-alfredo__id5pl49u8j1t3kj.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Wings
+  {
+    id: 1014,
+    nameAr: "أجنحة مقلية مقرمشة",
+    nameEn: "Crispy Fried Wings",
+    descriptionAr: "أجنحة دجاج مقلية مقرمشة",
+    descriptionEn: "Crispy fried chicken wings",
+    basePrice: 30,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 1,
+    isActive: true,
+    imagePath: "/images/crispy-fried-wings__8a79zxxqhvr0ihm.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1015,
+    nameAr: "أجنحة بصوص البافلو",
+    nameEn: "Buffalo Wings",
+    descriptionAr: "أجنحة بصوص البافلو الحار",
+    descriptionEn: "Spicy buffalo wings",
+    basePrice: 28,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 2,
+    isActive: true,
+    imagePath: "/images/buffalo-sauce-wings__hvhrz3c6wkwi56v.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1016,
+    nameAr: "أجنحة بصوص الباربيكيو",
+    nameEn: "BBQ Wings",
+    descriptionAr: "أجنحة بصوص الباربيكيو المدخن",
+    descriptionEn: "Smoked BBQ wings",
+    basePrice: 28,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 3,
+    isActive: true,
+    imagePath: "/images/bbq-sauce-wings__ut71ovptawjn1ai.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1017,
+    nameAr: "أجنحة بصوص التيراكي",
+    nameEn: "Teriyaki Wings",
+    descriptionAr: "أجنحة بصوص التيراكي",
+    descriptionEn: "Teriyaki wings",
+    basePrice: 28,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 4,
+    isActive: true,
+    imagePath: "/images/teriyaki-sauce-wings__lle6d5attaszh53.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1018,
+    nameAr: "أجنحة بصوص وثوم وليمون وبارميزان",
+    nameEn: "Lemon Parmesan Wings",
+    descriptionAr: "أجنحة بصوص والثوم والليمون وجبنة البارميزان",
+    descriptionEn: "Garlic, lemon and parmesan wings",
+    basePrice: 28,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 5,
+    isActive: true,
+    imagePath: "/images/garlic-lemon-parmesan-wings__pu0bcxvhvsozf63.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1019,
+    nameAr: "أجنحة بصوص الثومة والليمون",
+    nameEn: "Garlic Lemon Wings",
+    descriptionAr: "أجنحة بصوص الثومة والليمون",
+    descriptionEn: "Garlic and lemon wings",
+    basePrice: 28,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 6,
+    isActive: true,
+    imagePath: "/images/garlic-lemon-wings__871mbhqqt1p5bk7.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1020,
+    nameAr: "أجنحة بصوص السويت شيلي",
+    nameEn: "Sweet Chili Wings",
+    descriptionAr: "أجنحة بصوص السويت شيلي",
+    descriptionEn: "Sweet chili wings",
+    basePrice: 28,
+    discount: 10,
+    categoryId: 103,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 7,
+    isActive: true,
+    imagePath: "/images/sweet-chili-wings__kdipx15msj2668u.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Kids Meals
+  {
+    id: 1021,
+    nameAr: "كيدز بيرجر لحمة",
+    nameEn: "Kids Beef Burger",
+    descriptionAr: "الوجبة تشمل بطاطا مقلية وعصير",
+    descriptionEn: "Meal includes french fries and juice",
+    basePrice: 23,
+    discount: 10,
     categoryId: 104,
     branchId: null,
     allBranches: true,
@@ -218,269 +448,109 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 1,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1010,
-    nameAr: "بطاطا مقلية صينية",
-    nameEn: "French Fries",
-    descriptionAr: "بطاطا مقرمشة ذهبية",
-    descriptionEn: "Golden crispy french fries",
-    basePrice: 10,
-    discount: 0,
-    categoryId: 105,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 1,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1011,
-    nameAr: "أصابع الموزاريلا",
-    nameEn: "Mozzarella Sticks",
-    descriptionAr: "أصابع موزاريلا مقرمشة تقدم مع صوص المارينارا (5 قطع)",
-    descriptionEn: "Crispy mozzarella sticks served with marinara sauce (5 pieces)",
-    basePrice: 15,
-    discount: 0,
-    categoryId: 105,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 2,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1531749668029-2be8c962bda5?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1012,
-    nameAr: "أجنحة الدجاج",
-    nameEn: "Chicken Wings",
-    descriptionAr: "أجنحة دجاج مقلية بصوص البافلو أو الباربكيو (6 قطع)",
-    descriptionEn: "Fried chicken wings tossed in buffalo or BBQ sauce (6 pieces)",
-    basePrice: 20,
-    discount: 0,
-    categoryId: 105,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 3,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1565299585323-38d1b7371a58?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1013,
-    nameAr: "بيبسي",
-    nameEn: "Pepsi",
-    descriptionAr: "علبة بيبسي",
-    descriptionEn: "Pepsi Can",
-    basePrice: 4,
-    discount: 0,
-    categoryId: 106,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 1,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1014,
-    nameAr: "سفن أب",
-    nameEn: "7up",
-    descriptionAr: "علبة سفن أب",
-    descriptionEn: "7up Can",
-    basePrice: 4,
-    discount: 0,
-    categoryId: 106,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 2,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1015,
-    nameAr: "ماء",
-    nameEn: "Water",
-    descriptionAr: "زجاجة مياه معدنية صغيرة",
-    descriptionEn: "Small mineral water bottle",
-    basePrice: 3,
-    discount: 0,
-    categoryId: 106,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 3,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1016,
-    nameAr: "تشيز كيك نيويورك",
-    nameEn: "New York Cheesecake",
-    descriptionAr: "قطعة من التشيز كيك الكلاسيكي بصوص الفراولة",
-    descriptionEn: "A slice of classic cheesecake with strawberry sauce",
-    basePrice: 20,
-    discount: 0,
-    categoryId: 107,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 1,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1017,
-    nameAr: "مولتن شوكليت كيك",
-    nameEn: "Molten Chocolate Cake",
-    descriptionAr: "كيك الشوكولاتة الدافئ مع الآيس كريم",
-    descriptionEn: "Warm chocolate cake with ice cream",
-    basePrice: 22,
-    discount: 0,
-    categoryId: 107,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 2,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1018,
-    nameAr: "أولد سكول برجر",
-    nameEn: "Old School Burger",
-    descriptionAr: "شريحة لحم كلاسيكية مع إضافات أبتاون الأصلية",
-    descriptionEn: "Classic beef patty with original Uptown additions",
-    basePrice: 35,
-    discount: 0,
-    categoryId: 101,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: true,
-    hasDonenessOption: false,
-    sortOrder: 5,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1019,
-    nameAr: "سماش برجر",
-    nameEn: "Smash Burger",
-    descriptionAr: "شريحتين رقيقتين من اللحم المشوي، جبنة، صوص سماش",
-    descriptionEn: "Two thin smashed beef patties, cheese, smash sauce",
-    basePrice: 32,
-    discount: 0,
-    categoryId: 101,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: true,
-    hasDonenessOption: false,
-    sortOrder: 6,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1020,
-    nameAr: "فيليه دجاج برجر",
-    nameEn: "Chicken Filet Burger",
-    descriptionAr: "فيليه دجاج مشوي مع الخس والطماطم",
-    descriptionEn: "Grilled chicken filet with lettuce and tomato",
-    basePrice: 28,
-    discount: 0,
-    categoryId: 102,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: true,
-    hasDonenessOption: false,
-    sortOrder: 3,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1606755962773-d32172e7a202?q=80&w=800&auto=format&fit=crop",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
-  },
-  {
-    id: 1021,
-    nameAr: "ساندويش حبش مدخن",
-    nameEn: "Smoked Turkey Sandwich",
-    descriptionAr: "شرائح الحبش المدخن مع الجبنة والخس",
-    descriptionEn: "Smoked turkey slices with cheese and lettuce",
-    basePrice: 20,
-    discount: 0,
-    categoryId: 103,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: true,
-    hasDonenessOption: false,
-    sortOrder: 3,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1628198539209-77f6bbfd0ec5?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/kids-beef-burger__vhek3ygzet469f2.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1022,
-    nameAr: "زنجر ساندويتش",
-    nameEn: "Zinger Sandwich",
-    descriptionAr: "دجاج زنجر حار ومقرمش",
-    descriptionEn: "Spicy and crispy Zinger chicken",
-    basePrice: 22,
-    discount: 0,
-    categoryId: 103,
+    nameAr: "كيدز بيرجر دجاج",
+    nameEn: "Kids Chicken Burger",
+    descriptionAr: "الوجبة تشمل بطاطا مقلية وعصير",
+    descriptionEn: "Meal includes french fries and juice",
+    basePrice: 23,
+    discount: 10,
+    categoryId: 104,
     branchId: null,
     allBranches: true,
-    hasMealOption: true,
+    hasMealOption: false,
     hasDonenessOption: false,
-    sortOrder: 4,
+    sortOrder: 2,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1626244405389-7008cf585d82?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/kids-beef-burger__vhek3ygzet469f2.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
     id: 1023,
-    nameAr: "شاورما دجاج بخبز التورتيلا",
-    nameEn: "Chicken Shawarma Wrap",
-    descriptionAr: "شاورما دجاج الطازجة في خبز التورتيلا والمثومة",
-    descriptionEn: "Fresh chicken shawarma in tortilla bread with garlic sauce",
-    basePrice: 15,
-    discount: 0,
-    categoryId: 103,
+    nameAr: "بوب كورن دجاج",
+    nameEn: "Chicken Popcorn",
+    descriptionAr: "الوجبة تشمل بطاطا مقلية وعصير",
+    descriptionEn: "Meal includes french fries and juice",
+    basePrice: 23,
+    discount: 10,
+    categoryId: 104,
     branchId: null,
     allBranches: true,
-    hasMealOption: true,
+    hasMealOption: false,
     hasDonenessOption: false,
-    sortOrder: 5,
+    sortOrder: 3,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1529144415895-6aaf8be872fb?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/chicken-popcorn__8ql6ou2bhl45zed.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Salads
+  {
+    id: 1024,
+    nameAr: "سلطة سيزر",
+    nameEn: "Caesar Salad",
+    descriptionAr: "خس . جبنة بارميزان . خبز محمص . صوص سيزر",
+    descriptionEn: "Lettuce, parmesan cheese, croutons, and Caesar dressing",
+    basePrice: 25,
+    discount: 10,
+    categoryId: 105,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 1,
+    isActive: true,
+    imagePath: "/images/caesar-salad-kgn4gpstowx0mu9-c9d70a64-0049-4b14-974b-dc68ac07791c.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
-    id: 1024,
-    nameAr: "ودجز",
-    nameEn: "Wedges",
-    descriptionAr: "بطاطس ودجز المتبلة",
-    descriptionEn: "Seasoned potato wedges",
-    basePrice: 12,
-    discount: 0,
+    id: 1025,
+    nameAr: "سلطة يونانية",
+    nameEn: "Greek Salad",
+    descriptionAr: "خس . فلفل ملون . خيار . زيتون أسود . بندورة . ليمون . زيت زيتون . جبنة فيتا",
+    descriptionEn: "Lettuce, bell peppers, cucumber, olives, tomato, lemon, olive oil, and feta cheese",
+    basePrice: 30,
+    discount: 10,
+    categoryId: 105,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 2,
+    isActive: true,
+    imagePath: "/images/greek-salad__3ogmuh9isdbt41n.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1026,
+    nameAr: "سلطة جرجير",
+    nameEn: "Arugula Salad",
+    descriptionAr: "جرجير . بندورة شيري . بصل أحمر . ليمون . زيت زيتون . سماق",
+    descriptionEn: "Arugula, cherry tomatoes, red onion, lemon, olive oil, and sumac",
+    basePrice: 25,
+    discount: 10,
+    categoryId: 105,
+    branchId: null,
+    allBranches: true,
+    hasMealOption: false,
+    hasDonenessOption: false,
+    sortOrder: 3,
+    isActive: true,
+    imagePath: "/images/arugula-salad__pqxln7lhzdde5ww.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1027,
+    nameAr: "سلطة حلومي",
+    nameEn: "Halloumi Salad",
+    descriptionAr: "خس . بندورة شيري . جبنة حلومي . صوص رانش",
+    descriptionEn: "Lettuce, cherry tomatoes, halloumi cheese, and ranch dressing",
+    basePrice: 35,
+    discount: 10,
     categoryId: 105,
     branchId: null,
     allBranches: true,
@@ -488,17 +558,17 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 4,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/halloumi-salad__4yk717hcdec5vqt.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
-    id: 1025,
-    nameAr: "حلقات البصل",
-    nameEn: "Onion Rings",
-    descriptionAr: "حلقات بصل مقرمشة وذهبية",
-    descriptionEn: "Crispy golden onion rings",
-    basePrice: 14,
-    discount: 0,
+    id: 1028,
+    nameAr: "سلطة كينوا",
+    nameEn: "Quinoa Salad",
+    descriptionAr: "كينوا . بقدونس . عسل . دبس رمان . زيت زيتون . ليمون . كرانبري . جوز . أناناس",
+    descriptionEn: "Quinoa, parsley, honey, pomegranate molasses, olive oil, lemon, cranberry, walnut, and pineapple",
+    basePrice: 30,
+    discount: 10,
     categoryId: 105,
     branchId: null,
     allBranches: true,
@@ -506,17 +576,17 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 5,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/quinoa-salad__qr0exktqt76ov8j.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
-    id: 1026,
-    nameAr: "ناجتس الدجاج",
-    nameEn: "Chicken Nuggets",
-    descriptionAr: "قطع الناجتس (8 قطع)",
-    descriptionEn: "Chicken nuggets (8 pieces)",
-    basePrice: 16,
-    discount: 0,
+    id: 1029,
+    nameAr: "سلطة فتوش",
+    nameEn: "Fattoush Salad",
+    descriptionAr: "خس ناعم . بندورة . خيار . فلفل . بصل أبيض . نعنع . خبز محمص . سماق . ملح . دبس رمان",
+    descriptionEn: "Lettuce, tomato, cucumber, pepper, white onion, mint, fried bread, sumac, salt, and pomegranate molasses",
+    basePrice: 30,
+    discount: 10,
     categoryId: 105,
     branchId: null,
     allBranches: true,
@@ -524,105 +594,571 @@ export const mockProducts = [
     hasDonenessOption: false,
     sortOrder: 6,
     isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=800&auto=format&fit=crop",
+    imagePath: "/images/fattoush-salad__oxjgflscdmor62d.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Cold Coffee (106)
+  {
+    id: 1101, nameAr: "سبانش لاتيه", nameEn: "Spanish Latte", descriptionAr: "بريك قهوة بارد ومنعش", descriptionEn: "Refreshing cold coffee break",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/spanish-latte__0j9ew7pi59r1fb6.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
-    id: 1027,
-    nameAr: "ميرندا",
-    nameEn: "Miranda",
-    descriptionAr: "ميرندا برتقال باردة",
-    descriptionEn: "Cold orange miranda",
-    basePrice: 4,
-    discount: 0,
-    categoryId: 106,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 4,
-    isActive: true,
+    id: 1102, nameAr: "آيس كابتشينو", nameEn: "Ice Cappuccino", descriptionAr: "كابتشينو مثلج مع رغوة كثيفة", descriptionEn: "Iced cappuccino with thick foam",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 2, isActive: true,
+    imagePath: "/images/iced-cappuccino__nh76n3rx78rmkfm.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1103, nameAr: "آيس لاتيه", nameEn: "Ice Latte", descriptionAr: "لاتيه كلاسيكي مثلج", descriptionEn: "Classic iced latte",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 3, isActive: true,
+    imagePath: "/images/iced-latte__igw1jlq8obg8clj.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1104, nameAr: "آيس كوفي", nameEn: "Ice Coffee", descriptionAr: "قهوة مثلجة منعشة", descriptionEn: "Refreshing iced coffee",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 4, isActive: true,
+    imagePath: "/images/iced-coffee__x9fwu0nnonmt1bf.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1105, nameAr: "آيس كارميل لاتيه", nameEn: "Ice Caramel Latte", descriptionAr: "لاتيه مثلج مع صوص الكارميل", descriptionEn: "Iced latte with caramel sauce",
+    basePrice: 19, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 5, isActive: true,
+    imagePath: "/images/iced-caramel-latte__7s8czuyblnkgk6r.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1106, nameAr: "آيس أمريكانو", nameEn: "Ice Americano", descriptionAr: "أمريكانو كلاسيكي مثلج", descriptionEn: "Classic iced americano",
+    basePrice: 16, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 6, isActive: true,
+    imagePath: "/images/iced-americano__2ignz0x5yz4sxhu.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1107, nameAr: "فرابتشينو", nameEn: "Frappuccino", descriptionAr: "مشروب فرابتشينو الغني", descriptionEn: "Rich frappuccino drink",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 7, isActive: true,
+    imagePath: "/images/frappuccino__11jotuwxtm2czjo.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1108, nameAr: "آيس موكا", nameEn: "Ice Mocha", descriptionAr: "موكا مثلجة بلمسة شوكولاتة", descriptionEn: "Iced mocha with a chocolate touch",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 8, isActive: true,
+    imagePath: "/images/iced-mocha__shnp5dn9oggwun7.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1109, nameAr: "آيس وايت موكا", nameEn: "Ice White Mocha", descriptionAr: "وايت موكا مثلجة", descriptionEn: "Iced white mocha",
+    basePrice: 17, discount: 10, categoryId: 106, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 9, isActive: true,
+    imagePath: "/images/iced-white-mocha__rcg0h9ji0z1trnx.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Natural Smoothie (107)
+  {
+    id: 1201, nameAr: "سموذي طبيعي", nameEn: "Natural Smoothie", descriptionAr: "تشكيلة سموذي فواكه طبيعية", descriptionEn: "Assorted natural fruit smoothies",
+    basePrice: 17, discount: 10, categoryId: 107, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/natural-smoothie__c9pnbwbvwhncuvs.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Milkshake (108)
+  {
+    id: 1301, nameAr: "ميلك شيك", nameEn: "Milkshake", descriptionAr: "ميلك شيك غني بعدة نكهات", descriptionEn: "Rich milkshakes in various flavors",
+    basePrice: 17, discount: 10, categoryId: 108, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/milkshakes__pgt1ljcxf6qma9t.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Hot Drinks (109)
+  {
+    id: 1401, nameAr: "شاي", nameEn: "Tea", descriptionAr: "شاي كلاسيكي ساخن", descriptionEn: "Classic hot tea",
+    basePrice: 8, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/tea__68ipsqrolope9un.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1402, nameAr: "اسبريسو", nameEn: "Espresso", descriptionAr: "اسبريسو كلاسيكي", descriptionEn: "Classic espresso",
+    basePrice: 8, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 2, isActive: true,
+    imagePath: "/images/espresso__e6jr0mu46qix1iw.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1403, nameAr: "قهوة عربية", nameEn: "Arabic Coffee", descriptionAr: "قهوة عربية أصيلة", descriptionEn: "Authentic Arabic coffee",
+    basePrice: 13, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 3, isActive: true,
+    imagePath: "/images/arabic-coffee__nrx56q4y8ik0dt1.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1404, nameAr: "أمريكانو", nameEn: "Americano", descriptionAr: "قهوة أمريكانو ساخنة", descriptionEn: "Hot Americano coffee",
+    basePrice: 13, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 4, isActive: true,
+    imagePath: "/images/americano__ikrmozgl4db883m.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1405, nameAr: "موكا", nameEn: "Mocha", descriptionAr: "مزيج ساخن من القهوة والكاكاو", descriptionEn: "Hot mix of coffee and cocoa",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 5, isActive: true,
+    imagePath: "/images/mocha__nruytezewx8c3t4.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1406, nameAr: "وايت موكا", nameEn: "White Mocha", descriptionAr: "موكا ساخنة بالشوكولاتة البيضاء", descriptionEn: "Hot white chocolate mocha",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 6, isActive: true,
+    imagePath: "/images/white-mocha__6ch77h9v3dnxy1k.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1407, nameAr: "كابتشينو", nameEn: "Cappuccino", descriptionAr: "كابتشينو كلاسيكي ساخن", descriptionEn: "Classic hot cappuccino",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 7, isActive: true,
+    imagePath: "/images/cappuccino__jzn3vtp7cja8809.webp",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1408, nameAr: "لاتيه", nameEn: "Latte", descriptionAr: "لاتيه كلاسيكي ساخن", descriptionEn: "Classic hot latte",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 8, isActive: true,
+    imagePath: "/images/latte__kgf531y5zc8pm74.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1409, nameAr: "شاي لاتيه", nameEn: "Tea Latte", descriptionAr: "شاي بلمسة من الحليب", descriptionEn: "Tea with a milky touch",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 9, isActive: true,
+    imagePath: "/images/tea-latte__lciq1bb4qgw7zfi.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1410, nameAr: "بندق", nameEn: "Hazelnut Drink", descriptionAr: "مزيج ساخن بنكهة البندق", descriptionEn: "Hot mix with hazelnut flavor",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 10, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1536964541075-e392d48c0273?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1411, nameAr: "هوت تشوكليت", nameEn: "Hot Chocolate", descriptionAr: "شوكولاتة ساخنة غنية", descriptionEn: "Rich hot chocolate",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 11, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1412, nameAr: "إيطاليان تشوكليت", nameEn: "Italian Chocolate", descriptionAr: "شوكولاتة إيطالية ساخنة كثيفة", descriptionEn: "Thick Italian hot chocolate",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 12, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1413, nameAr: "مكس أعشاب", nameEn: "Herbal Mix", descriptionAr: "مزيج أعشاب برية ساخنة", descriptionEn: "Hot wild herbal mix",
+    basePrice: 10, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 13, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1563911146282-5017a471f13d?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1414, nameAr: "سبانش لاتيه", nameEn: "Hot Spanish Latte", descriptionAr: "سبانش لاتيه ساخن", descriptionEn: "Hot Spanish latte",
+    basePrice: 16, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 14, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1415, nameAr: "نسكافيه", nameEn: "Nescafe", descriptionAr: "نسكافيه كلاسيكي ساخن", descriptionEn: "Classic hot Nescafe",
+    basePrice: 13, discount: 10, categoryId: 109, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 15, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Desserts (110)
+  {
+    id: 1501, nameAr: "وافل مع آيس كريم", nameEn: "Waffle with Ice Cream", descriptionAr: "وافل ساخن يقدم مع الآيس كريم", descriptionEn: "Hot waffle served with ice cream",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/waffle-with-ice-cream__x29z7g0cy8sbot9.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1502, nameAr: "كريب مع شوكولاتة", nameEn: "Crepe with Chocolate", descriptionAr: "كريب محشو بالشوكولاتة", descriptionEn: "Crepe filled with chocolate",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 2, isActive: true,
+    imagePath: "/images/crepe-with-chocolate__6lfwdup297e7hd5.webp",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1503, nameAr: "سوفليه مع بوظة", nameEn: "Souffle with Ice Cream", descriptionAr: "سوفليه شوكولاتة ساخن مع الآيس كريم", descriptionEn: "Hot chocolate souffle with ice cream",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 3, isActive: true,
+    imagePath: "/images/souffle-with-ice-cream__o375y0v76qe0ehb.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1504, nameAr: "آيس كريم", nameEn: "Ice Cream", descriptionAr: "3 سكوپ من نكهاتك المفضلة", descriptionEn: "3 scoops of your favorite flavors",
+    basePrice: 15, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 4, isActive: true,
+    imagePath: "/images/ice-cream__ve92ex3v6cb5ol6.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1505, nameAr: "سان سباستيان تشيز كيك", nameEn: "San Sebastian Cheesecake", descriptionAr: "تشيز كيك سان سباستيان الكريمي", descriptionEn: "Creamy San Sebastian cheesecake",
+    basePrice: 30, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 5, isActive: true,
+    imagePath: "/images/san-sebastian-cheesecake__crjozhzu3bx2i1k.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1506, nameAr: "بلوبيري تشيز كيك", nameEn: "Blueberry Cheesecake", descriptionAr: "تشيز كيك بلمسة بلوبيري", descriptionEn: "Cheesecake with a blueberry touch",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 6, isActive: true,
+    imagePath: "/images/blueberry-cheesecake__163xoiwy7wlrfjb.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1507, nameAr: "لوتس تشيز كيك", nameEn: "Lotus Cheesecake", descriptionAr: "تشيز كيك بطبقة اللوتس", descriptionEn: "Cheesecake with a lotus layer",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 7, isActive: true,
+    imagePath: "/images/lotus-cheesecake__dy0dgdb9jiizmu3.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1508, nameAr: "تيراميسو", nameEn: "Tiramisu", descriptionAr: "حلى التيراميسو الإيطالي", descriptionEn: "Italian Tiramisu dessert",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 8, isActive: true,
+    imagePath: "/images/tiramisu__sxnp971n4vv4o5k.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1509, nameAr: "تشوكليت كيك", nameEn: "Chocolate Cake", descriptionAr: "كيك شوكولاتة غني", descriptionEn: "Rich chocolate cake",
+    basePrice: 22, discount: 10, categoryId: 110, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 9, isActive: true,
+    imagePath: "/images/chocolate-cake__xb561uywo403igv.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Cold Drinks (111)
+  {
+    id: 1601, nameAr: "كولا", nameEn: "Cola", descriptionAr: "علبة كولا", descriptionEn: "Cola Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/cola__f6o1p5tywou44t7.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1602, nameAr: "كولا زيرو", nameEn: "Cola Zero", descriptionAr: "علبة كولا زيرو", descriptionEn: "Cola Zero Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 2, isActive: true,
     imagePath: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   },
   {
-    id: 1028,
-    nameAr: "ميلك شيك فراولة",
-    nameEn: "Strawberry Milkshake",
-    descriptionAr: "ميلك شيك منعش بنكهة الفراولة",
-    descriptionEn: "Refreshing strawberry milkshake",
-    basePrice: 18,
-    discount: 0,
-    categoryId: 106,
-    branchId: null,
-    allBranches: true,
-    hasMealOption: false,
-    hasDonenessOption: false,
-    sortOrder: 5,
-    isActive: true,
-    imagePath: "https://images.unsplash.com/photo-1579954115545-a95f9ab7a4ea?q=80&w=800&auto=format&fit=crop",
+    id: 1603, nameAr: "كولا تشات", nameEn: "Cola Chat", descriptionAr: "علبة كولا تشات", descriptionEn: "Cola Chat Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 3, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1604, nameAr: "كولا تشات زيرو", nameEn: "Cola Chat Zero", descriptionAr: "علبة كولا تشات زيرو", descriptionEn: "Cola Chat Zero Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 4, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1605, nameAr: "سبرايت دايت", nameEn: "Sprite Diet", descriptionAr: "علبة سبرايت دايت", descriptionEn: "Sprite Diet Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 5, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1606, nameAr: "كابي", nameEn: "Cappy Juice", descriptionAr: "عصير كابي", descriptionEn: "Cappy Juice bottle",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 6, isActive: true,
+    imagePath: "/images/juice__xe7kdad5ruvmdwq.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1607, nameAr: "سبرايت", nameEn: "Sprite", descriptionAr: "علبة سبرايت", descriptionEn: "Sprite Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 7, isActive: true,
+    imagePath: "/images/sprite__i4s36gw3g0d9m6i.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1608, nameAr: "فانتا", nameEn: "Fanta", descriptionAr: "علبة فانتا", descriptionEn: "Fanta Can",
+    basePrice: 6, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 8, isActive: true,
+    imagePath: "/images/fanta__qb9s0izcqjn38fr.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1609, nameAr: "ماء صغير", nameEn: "Small Water", descriptionAr: "زجاجة مياه صغيرة", descriptionEn: "Small water bottle",
+    basePrice: 5, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 9, isActive: true,
+    imagePath: "/images/small-water__retkduxc2891b17.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1610, nameAr: "بفاريا", nameEn: "Bavaria", descriptionAr: "شراب بفاريا بر باردة", descriptionEn: "Cold Bavaria drink",
+    base_price: 8, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 10, isActive: true,
+    imagePath: "/images/bavaria__g0tdpqe9yr51l45.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1611, nameAr: "صودا", nameEn: "Soda", descriptionAr: "ماء صودا", descriptionEn: "Soda water",
+    basePrice: 8, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 11, isActive: true,
+    imagePath: "/images/soda__28xcya6e1tmloih.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1612, nameAr: "XL", nameEn: "XL Energy Drink", descriptionAr: "مشروب طاقة XL", descriptionEn: "XL Energy Drink",
+    basePrice: 8, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 12, isActive: true,
+    imagePath: "/images/xl__l07thqasq1gfrd8.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1613, nameAr: "آيس فانيلا", nameEn: "Ice Vanilla", descriptionAr: "شراب منعش بنكهة الفانيلا", descriptionEn: "Refreshing ice vanilla drink",
+    basePrice: 17, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 13, isActive: true,
+    imagePath: "/images/iced-vanilla__cf85firw7etrfpb.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1614, nameAr: "آيس تي", nameEn: "Ice Tea", descriptionAr: "شاي مثلج منعش", descriptionEn: "Refreshing iced tea",
+    basePrice: 17, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 14, isActive: true,
+    imagePath: "/images/iced-tea__7xvf02dww34t6g9.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1615, nameAr: "آيس تشوكليت", nameEn: "Ice Chocolate", descriptionAr: "شوكولاتة مثلجة غنية", descriptionEn: "Rich iced chocolate",
+    basePrice: 17, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 15, isActive: true,
+    imagePath: "/images/iced-chocolate__n5gge2vfh6dvahl.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1616, nameAr: "موميتو", nameEn: "Mojito", descriptionAr: "موهيتو منعش للموميتو", descriptionEn: "Refreshing mojito drink",
+    basePrice: 17, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 16, isActive: true,
+    imagePath: "/images/mojito__dnldrs18pec0our.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1617, nameAr: "عصير", nameEn: "Juice", descriptionAr: "عصير فواكه طازج", descriptionEn: "Fresh fruit juice",
+    basePrice: 16, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 17, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 1618, nameAr: "كوكتيل مع بوظة", nameEn: "Cocktail with Ice Cream", descriptionAr: "كوكتيل فواكه مع الآيس كريم", descriptionEn: "Fruit cocktail with ice cream",
+    basePrice: 22, discount: 10, categoryId: 111, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 18, isActive: true,
+    imagePath: "/images/cocktail-with-ice-cream__8drtk81n7t43qxa.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Hookah (112)
+  {
+    id: 1701, nameAr: "أرجيلة", nameEn: "Hookah", descriptionAr: "أرجيلة بنكهات متنوعة", descriptionEn: "Hookah with various flavors",
+    basePrice: 30, discount: 10, categoryId: 112, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/shisha__3rtwtm1vhjem729.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Burgers (113)
+  {
+    id: 11301, nameAr: "كلاسيك تشيز بيرجر", nameEn: "Classic Cheese Burger", descriptionAr: "120 غرام . جبنة تشيدر . خس . بندورة . بصل . صوص اب تاون", descriptionEn: "120g, cheddar, lettuce, tomato, onions, uptown sauce",
+    basePrice: 23, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 1, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11302, nameAr: "سماش بيرجر", nameEn: "Smash Burger", descriptionAr: "240 غرام . جبنة تشيدر . بندورة . بصل . صوص اب تاون", descriptionEn: "240g, double cheddar, tomato, onions, uptown sauce",
+    basePrice: 35, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 2, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11303, nameAr: "باربيكيو بيرجر", nameEn: "BBQ Burger", descriptionAr: "150 غرام . خس . جبنة موزاريلا . مخلل . بصل . باربيكيو . صوص اب تاون", descriptionEn: "150g, mozzarella, pickles, onions, bbq sauce, uptown sauce",
+    basePrice: 25, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 3, isActive: true,
+    imagePath: "/images/bbq-burger__97v902v1q2v6ivd.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11304, nameAr: "سويس ماشroom بيرجر", nameEn: "Swiss Mushroom Burger", descriptionAr: "150 غرام . جبنة سويسرية . خس . بندورة . بصل . ماشroom . مخلل . صوص اب تاون", descriptionEn: "150g, swiss cheese, lettuce, tomato, mushroom, onions, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 4, isActive: true,
+    imagePath: "/images/swiss-mushroom-burger__hlysz016y2l4t86.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11305, nameAr: "ماشroom بيرجر", nameEn: "Mushroom Burger", descriptionAr: "150 غرام . ماشroom . خس . بندورة . بصل . مخلل . صوص اب تاون", descriptionEn: "150g, mushroom, lettuce, tomato, pickles, onions, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 5, isActive: true,
+    imagePath: "/images/mushroom-burger__clj8oax4i47h8zo.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11306, nameAr: "ماشroom وايت صوص بيرجر", nameEn: "Mushroom White Sauce Burger", descriptionAr: "150 غرام . ماشroom . وايت صوص . خس . بندورة . بصل . اب تاون صوص", descriptionEn: "150g, mushroom, white sauce, lettuce, tomato, onions, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 6, isActive: true,
+    imagePath: "/images/mushroom-white-sauce-burger__awox7853isjve21.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11307, nameAr: "مكسيكانو بيرجر", nameEn: "Mexicano Burger", descriptionAr: "150 غرام . خس . جبنة تشيدر . بندورة . بصل . هالبينو . صوص مكسيكي", descriptionEn: "150g, cheddar, tomato, onions, jalapeno, mexican sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 7, isActive: true,
+    imagePath: "/images/mexicano-burger__1ndayue9xrv3cl5.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11308, nameAr: "أسايدو بيرجر", nameEn: "Asado Burger", descriptionAr: "150 غرام . قطع لحم بقري فاخر مطهو لأكثر من 5 ساعات . خس . بندورة . بصل مشوي", descriptionEn: "150g slow-cooked beef bits, lettuce, tomato, grilled onions",
+    basePrice: 36, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 8, isActive: true,
+    imagePath: "/images/asado-burger__66b7hscj4pms70v.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11309, nameAr: "ريب أي بيرجر", nameEn: "Ribeye Burger", descriptionAr: "150 غرام . قطعة كلاسيك . شرائح ستيك ريب أي 60 غرام . خس . بندورة . بصل . جبنة", descriptionEn: "150g patty + ribeye strips, lettuce, tomato, onions, cheese",
+    basePrice: 45, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 9, isActive: true,
+    imagePath: "/images/ribeye-steak-burger__7zszm50t8r8v6r8.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11310, nameAr: "أرابيكا بيرجر", nameEn: "Arabica Burger", descriptionAr: "150 غرام . مكس من لحم الخاروف والعجل . خس . بندورة . بصل . مخلل . صوص", descriptionEn: "150g lamb/veal mix, lettuce, tomato, onions, pickles, sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 10, isActive: true,
+    imagePath: "/images/arabica-burger__6g7u4n2r9t4sqfi.webp",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11311, nameAr: "بلو تشيز بيرجر", nameEn: "Blue Cheese Burger", descriptionAr: "150 غرام . بلو تشيز . عسل . مكسرات . خس . بندورة . بصل . مخلل . صوص اب تاون", descriptionEn: "150g, blue cheese, honey, nuts, lettuce, tomato, onions, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 11, isActive: true,
+    imagePath: "/images/blue-cheese-burger__15kbt696245rpx3.webp",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11312, nameAr: "فرايد ايغ بيرجر", nameEn: "Fried Egg Burger", descriptionAr: "150 غرام . بيض مقلي . جبنة تشيدر . خس . بندورة . بصل . مخلل . صوص اب تاون", descriptionEn: "150g, fried egg, cheddar, lettuce, tomato, onions, pickles, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 12, isActive: true,
+    imagePath: "/images/fried-egg-burger__f8uuk669l9n6hsm.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11313, nameAr: "ستيك بيرجر", nameEn: "Steak Burger", descriptionAr: "150 غرام . قطعة كلاسيك . شرائح ستيك فيليه 60 غرام . خس . بندورة . بصل . مخلل", descriptionEn: "150g patty + fillet strips, lettuce, tomato, onions, pickles",
+    basePrice: 36, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 13, isActive: true,
+    imagePath: "/images/steak-burger__q76f0u47aygeu9q.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11314, nameAr: "دجاج كريسبي بيرجر", nameEn: "Crispy Chicken Burger", descriptionAr: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون", descriptionEn: "150g crispy chicken, lettuce, tomato, pickles, uptown sauce",
+    basePrice: 25, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 14, isActive: true,
+    imagePath: "/images/crispy-chicken-burger__564f8uub1269r5k.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11315, nameAr: "دجاج مشوي بيرجر", nameEn: "Grilled Chicken Burger", descriptionAr: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون", descriptionEn: "150g grilled chicken, lettuce, tomato, pickles, uptown sauce",
+    basePrice: 25, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 15, isActive: true,
+    imagePath: "/images/grilled-chicken-burger__ve66rurqrely1a4.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11316, nameAr: "نباتي بيرجر", nameEn: "Vegetarian Burger", descriptionAr: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون . صوص رانش . جبنة حلومي", descriptionEn: "150g vegetable patty, lettuce, tomato, onions, pickles, halloumi cheese",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 16, isActive: true,
+    imagePath: "/images/vegetarian-burger__n5t03l8y6y3rsvo.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11317, nameAr: "بصل مكرمل بيرجر", nameEn: "Caramelized Onion Burger", descriptionAr: "150 غرام . خس . بندورة . بصل . مخلل . صوص اب تاون . بصل مكرمل", descriptionEn: "150g, lettuce, tomato, onions, pickles, caramelized onion, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 17, isActive: true,
+    imagePath: "/images/caramelized-onion-burger__3h4n3jrh69h6f36.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11318, nameAr: "هاواين بيرجر", nameEn: "Hawaiian Burger", descriptionAr: "150 غرام . خس . بندورة . قطعتين أناناس . مخلل . صوص اب تاون", descriptionEn: "150g, lettuce, tomato, pineapple rings (2), pickles, uptown sauce",
+    basePrice: 30, discount: 10, categoryId: 113, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: true, sortOrder: 18, isActive: true,
+    imagePath: "/images/hawaiian-burger__8vovpt6gltj7xho.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+
+  // Appetizers (114)
+  {
+    id: 11401, nameAr: "أصابع موزاريلا 3 قطع", nameEn: "Mozzarella Sticks 3pcs", descriptionAr: "3 قطع أصابع موزاريلا مقلية مقرمشة", descriptionEn: "3 pieces of crispy fried mozzarella sticks",
+    basePrice: 12, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 1, isActive: true,
+    imagePath: "/images/mozzarella-sticks__tup29ubp1v3iv2t.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11402, nameAr: "بوب كورن دجاج", nameEn: "Chicken Popcorn", descriptionAr: "250 غرام من قطع الدجاج الصغيرة المقرمشة", descriptionEn: "250g of small crispy chicken pieces",
+    basePrice: 22, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 2, isActive: true,
+    imagePath: "/images/chicken-popcorn__8ql6ou2bhl45zed.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11403, nameAr: "أصابع دجاج 5 قطع", nameEn: "Chicken Fingers 5pcs", descriptionAr: "5 قطع من أصابع الدجاج المقلية", descriptionEn: "5 pieces of fried chicken finger sticks",
+    basePrice: 22, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 3, isActive: true,
+    imagePath: "/images/chicken-popcorn__8ql6ou2bhl45zed.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11404, nameAr: "تشيكن اند فرايز", nameEn: "Chicken and Fries", descriptionAr: "قطع دجاج مقلية مع بطاطا", descriptionEn: "Fried chicken pieces with french fries",
+    basePrice: 30, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 4, isActive: true,
+    imagePath: "/images/chicken-and-fries__64mcl0nduylsk8p.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11405, nameAr: "حلقات بصل 8 قطع", nameEn: "Onion Rings 8pcs", descriptionAr: "8 قطع من حلقات البصل الذهبية", descriptionEn: "8 pieces of golden onion rings",
+    basePrice: 10, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 5, isActive: true,
+    imagePath: "/images/onion-rings__h7c0z7e9sc37r4j.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11406, nameAr: "بطاطا مقلية", nameEn: "French Fries", descriptionAr: "بطاطا مقلية كلاسيكية", descriptionEn: "Classic crispy french fries",
+    basePrice: 7, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 6, isActive: true,
+    imagePath: "/images/french-fries__c5eiz0v8y8m9ihc.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11407, nameAr: "علبة جبنة", nameEn: "Cheese Cup", descriptionAr: "علبة صوص الجبنة الغنية", descriptionEn: "Rich cheese sauce cup",
+    basePrice: 5, discount: 0, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 7, isActive: true,
+    imagePath: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800&auto=format&fit=crop",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11408, nameAr: "بطاطا", nameEn: "Specialty Potato", descriptionAr: "بطاطا اب تاون الخاصة", descriptionEn: "Special Uptown style potatoes",
+    basePrice: 12, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 8, isActive: true,
+    imagePath: "/images/specialty-potato__8b3q7u0970t9n9s.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11409, nameAr: "فرينش فانيلا", nameEn: "French Vanilla", descriptionAr: "مشروب بنكهة الفانيلا الفرنسية", descriptionEn: "French vanilla flavored drink",
+    basePrice: 15, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: false, hasDonenessOption: false, sortOrder: 9, isActive: true,
+    imagePath: "/images/iced-vanilla__cf85firw7etrfpb.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11410, nameAr: "فيليه تشيز ستيك", nameEn: "Philly Cheese Steak", descriptionAr: "180 غرام . لحم عجل فيليه مشوي . جبنة تشيدر . جبنة موزاريلا . صوص رانش . فلفل", descriptionEn: "180g veal fillet, cheddar, mozzarella, ranch, peppers",
+    basePrice: 36, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 10, isActive: true,
+    imagePath: "/images/philly-cheesesteak__7f59d0v89t5x0ou.jpg",
+    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
+  },
+  {
+    id: 11411, nameAr: "تورتيلا دجاج مقلي مقرمش", nameEn: "Crispy Chicken Tortilla", descriptionAr: "140 غرام . كريسبي راب او مشوي . خس . مخلل . بصل . صوص مكسيكي . صوص اب تاون", descriptionEn: "140g crispy/grilled chicken, lettuce, pickles, onions, mexican sauce",
+    basePrice: 18, discount: 10, categoryId: 114, branchId: null, allBranches: true, hasMealOption: true, hasDonenessOption: false, sortOrder: 11, isActive: true,
+    imagePath: "/images/crispy-chicken-tortilla__8f8rsw0xpv9z5rk.jpg",
     createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), sizes: [], types: []
   }
 ];
 
 export const mockAddonGroups = [
   {
-    id: 1,
-    nameAr: "إضافات مدفوعة",
-    nameEn: "Paid Addons",
-    categoryId: 1,
-    productId: null,
-    groupType: "addons",
-    isRequired: false,
-    allowMultiple: true,
-    sortOrder: 1,
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    id: 1, nameAr: "الحجم", nameEn: "Size", categoryId: 113, productId: null, groupType: "sizes", isRequired: true, allowMultiple: false, sortOrder: 1, isActive: true,
     items: [
-      {
-        id: 1,
-        addonGroupId: 1,
-        nameAr: "جبنة إضافية",
-        nameEn: "Extra Cheese",
-        price: 3,
-        sortOrder: 1,
-        isActive: true
-      }
+      { id: 101, nameAr: "120 غرام", nameEn: "120g", price: 23, sortOrder: 1, isActive: true },
+      { id: 102, nameAr: "150 غرام", nameEn: "150g", price: 25, sortOrder: 2, isActive: true },
+      { id: 103, nameAr: "240 غرام", nameEn: "240g", price: 35, sortOrder: 3, isActive: true },
+      { id: 104, nameAr: "300 غرام", nameEn: "300g", price: 40, sortOrder: 4, isActive: true }
     ]
   },
   {
-    id: 2,
-    nameAr: "بدون إضافات",
-    nameEn: "Without Addons",
-    categoryId: 1,
-    productId: null,
-    groupType: "without",
-    isRequired: false,
-    allowMultiple: true,
-    sortOrder: 2,
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    id: 2, nameAr: "النوع", nameEn: "Type", categoryId: 113, productId: null, groupType: "types", isRequired: true, allowMultiple: false, sortOrder: 2, isActive: true,
     items: [
-      {
-        id: 2,
-        addonGroupId: 2,
-        nameAr: "بدون بصل",
-        nameEn: "Without Onions",
-        price: 0,
-        sortOrder: 1,
-        isActive: true
-      },
-      {
-        id: 3,
-        addonGroupId: 2,
-        nameAr: "بدون مخلل",
-        nameEn: "Without Pickles",
-        price: 0,
-        sortOrder: 2,
-        isActive: true
-      }
+      { id: 201, nameAr: "بيرجر", nameEn: "Burger", price: 0, sortOrder: 1, isActive: true },
+      { id: 202, nameAr: "وجبة ( مع بطاطا ومشروب غازي )", nameEn: "Meal (Fries & Drink)", price: 9, sortOrder: 2, isActive: true }
+    ]
+  },
+  {
+    id: 3, nameAr: "إضافات", nameEn: "Addons", categoryId: 113, productId: null, groupType: "addons", isRequired: false, allowMultiple: true, sortOrder: 3, isActive: true,
+    items: [
+      { id: 301, nameAr: "قطعة لحمة 120 غرام", nameEn: "Extra Meat 120g", price: 12, sortOrder: 1, isActive: true },
+      { id: 302, nameAr: "قطعة لحمة 150 غرام", nameEn: "Extra Meat 150g", price: 15, sortOrder: 2, isActive: true },
+      { id: 303, nameAr: "بورشن ريب آي", nameEn: "Ribeye Portion", price: 15, sortOrder: 3, isActive: true },
+      { id: 304, nameAr: "بورشن فيليه", nameEn: "Fillet Portion", price: 12, sortOrder: 4, isActive: true },
+      { id: 305, nameAr: "جبنة على البرغر", nameEn: "Extra Cheese", price: 3, sortOrder: 5, isActive: true },
+      { id: 306, nameAr: "بصل مكرمل", nameEn: "Caramelized Onion", price: 3, sortOrder: 6, isActive: true },
+      { id: 307, nameAr: "ماشروم", nameEn: "Mushroom", price: 3, sortOrder: 7, isActive: true },
+      { id: 308, nameAr: "خبز خالي من الجلوتين", nameEn: "Gluten Free Bread", price: 5, sortOrder: 8, isActive: true },
+      { id: 309, nameAr: "أفوكادو", nameEn: "Avocado", price: 5, sortOrder: 9, isActive: true },
+      { id: 310, nameAr: "هالبينو", nameEn: "Jalapeno", price: 3, sortOrder: 10, isActive: true },
+      { id: 311, nameAr: "أصبعين موزاريلا", nameEn: "2 Mozzarella Sticks", price: 8, sortOrder: 11, isActive: true },
+      { id: 312, nameAr: "3 حلقات بصل", nameEn: "3 Onion Rings", price: 5, sortOrder: 12, isActive: true },
+      { id: 313, nameAr: "وايت صوص", nameEn: "White Sauce", price: 5, sortOrder: 13, isActive: true }
+    ]
+  },
+  {
+    id: 4, nameAr: "بدون", nameEn: "Without", categoryId: 113, productId: null, groupType: "without", isRequired: false, allowMultiple: true, sortOrder: 4, isActive: true,
+    items: [
+      { id: 401, nameAr: "مخلل", nameEn: "Pickles", price: 0, sortOrder: 1, isActive: true },
+      { id: 402, nameAr: "بندورة", nameEn: "Tomato", price: 0, sortOrder: 2, isActive: true },
+      { id: 403, nameAr: "بصل", nameEn: "Onion", price: 0, sortOrder: 3, isActive: true },
+      { id: 404, nameAr: "جبنة", nameEn: "Cheese", price: 0, sortOrder: 4, isActive: true },
+      { id: 405, nameAr: "خس", nameEn: "Lettuce", price: 0, sortOrder: 5, isActive: true },
+      { id: 406, nameAr: "صوص", nameEn: "Sauce", price: 0, sortOrder: 6, isActive: true }
     ]
   }
 ];
@@ -651,8 +1187,17 @@ export const mockBanners = [
   {
     id: 1,
     name: "Banner 1",
-    imagePath: "/uploads/mainscreen/3018f9b8daf9db07b400c2f718a469da.webp",
+    imagePath: "/images/panar1.jpeg",
     sortOrder: 1,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 2,
+    name: "Banner 2",
+    imagePath: "/images/panar2.jpeg",
+    sortOrder: 2,
     isActive: true,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
